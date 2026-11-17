@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>糖心vl-影像创作与设备实测社区</title>
+<meta name="description" content="糖心vl聚合影像创作设备实测、拍摄现场复盘与剪辑流程拆解，收录机型对比、灯光布光表和调色参数，提供栏目索引、常见问题与创作者评论，帮你在真实场景里挑对器材。">
+<meta name="keywords" content="糖心vl">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23d1495b'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23fff0f2'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23d1495b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --red:#d1495b;
+  --red-deep:#9e2b3c;
+  --red-soft:#fbe9ec;
+  --ink:#1f1b1c;
+  --ink-2:#4a4345;
+  --ink-3:#7a7173;
+  --line:#e6dfe0;
+  --bg:#fdfbfa;
+  --card:#ffffff;
+  --sand:#f6f1ec;
+  --teal:#2a6f6b;
+  --gold:#b07d2b;
+  --r-s:6px;
+  --r-m:12px;
+  --r-l:20px;
+  --sh-s:0 1px 2px rgba(31,27,28,.06);
+  --sh-m:0 6px 20px rgba(31,27,28,.08);
+  --fs-xs:12px;
+  --fs-s:13.5px;
+  --fs-b:15.5px;
+  --fs-m:18px;
+  --fs-l:23px;
+  --fs-xl:32px;
+  --fs-2xl:44px;
+  --sp-1:6px;--sp-2:10px;--sp-3:16px;--sp-4:24px;--sp-5:36px;--sp-6:56px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --stick-h:104px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:var(--stick-h);}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font);font-size:var(--fs-b);line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;letter-spacing:.2px;}
+p{margin:0 0 var(--sp-3);}
+a{color:var(--red-deep);text-decoration:none;}
+a:hover{text-decoration:underline;}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.25em;}
+li{margin-bottom:6px;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;}
+
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto;}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:99;}
+.skip:focus{left:8px;top:8px;}
+
+/* 吸顶区 */
+.sticky-zone{position:sticky;top:0;z-index:60;}
+.announce{
+  background:var(--ink);color:#f7eeee;font-size:var(--fs-s);
+  padding:7px 0;
+}
+.announce .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.announce .tag{
+  background:var(--red);color:#fff;border-radius:99px;padding:1px 10px;
+  font-size:var(--fs-xs);letter-spacing:.5px;white-space:nowrap;
+}
+.announce a{color:#ffd9de;}
+.announce time{color:#cfc4c5;white-space:nowrap;}
+
+header.site{background:rgba(253,251,250,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:var(--sh-s);}
+.head-in{display:flex;align-items:center;gap:var(--sp-4);padding:12px 0;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:var(--fs-m);color:var(--ink);letter-spacing:.5px;}
+.brand:hover{text-decoration:none;}
+.brand .mark{width:34px;height:34px;flex:none;}
+nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;}
+nav.main a{
+  color:var(--ink-2);font-size:var(--fs-s);padding:7px 10px;border-radius:var(--r-s);
+}
+nav.main a:hover{background:var(--red-soft);color:var(--red-deep);text-decoration:none;}
+.head-tools{display:flex;align-items:center;gap:8px;}
+.searchbox{display:flex;align-items:center;border:1px solid var(--line);border-radius:99px;background:#fff;padding:3px 4px 3px 12px;min-width:200px;}
+.searchbox input{border:0;outline:0;background:transparent;font-size:var(--fs-s);width:100%;padding:5px 0;color:var(--ink);}
+.searchbox button{
+  border:0;background:var(--red);color:#fff;border-radius:99px;padding:5px 13px;
+  font-size:var(--fs-xs);cursor:pointer;
+}
+.searchbox button:focus-visible,a:focus-visible,summary:focus-visible,.totop:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+.btn-menu{
+  display:none;border:1px solid var(--line);background:#fff;border-radius:var(--r-s);
+  padding:7px 12px;font-size:var(--fs-s);cursor:pointer;color:var(--ink-2);
+}
+
+/* 首屏 */
+.hero{padding:var(--sp-6) 0 var(--sp-5);position:relative;overflow:hidden;}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-5);align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);
+  color:var(--teal);letter-spacing:2px;margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);}
+.hero h1{font-size:var(--fs-2xl);letter-spacing:1px;margin-bottom:16px;}
+.hero h1 em{font-style:normal;color:var(--red);}
+.hero .lede{font-size:var(--fs-m);color:var(--ink-2);max-width:34em;line-height:1.7;}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:var(--sp-4);}
+.btn{
+  display:inline-block;padding:10px 22px;border-radius:99px;font-size:var(--fs-s);
+  font-weight:600;border:1px solid transparent;cursor:pointer;
+}
+.btn-solid{background:var(--red);color:#fff;}
+.btn-solid:hover{background:var(--red-deep);text-decoration:none;}
+.btn-ghost{border-color:var(--line);color:var(--ink-2);background:#fff;}
+.btn-ghost:hover{border-color:var(--red);color:var(--red-deep);text-decoration:none;}
+.hero-stats{display:flex;gap:var(--sp-4);margin-top:var(--sp-5);flex-wrap:wrap;}
+.hero-stats div{min-width:88px;}
+.hero-stats b{display:block;font-size:var(--fs-l);color:var(--red-deep);line-height:1.2;}
+.hero-stats span{font-size:var(--fs-xs);color:var(--ink-3);}
+
+/* 首屏视觉 */
+.hero-art{position:relative;aspect-ratio:5/4.4;}
+.hero-art .frame{
+  position:absolute;inset:0;border-radius:var(--r-l);background:
+    radial-gradient(circle at 70% 25%,#ffe1e5 0 12%,transparent 13%),
+    linear-gradient(150deg,#fbe9ec 0%,#f3ece4 55%,#e9e3f5 100%);
+  box-shadow:var(--sh-m);overflow:hidden;
+}
+.hero-art svg{width:100%;height:100%;}
+.hero-art .cap{
+  position:absolute;right:-10px;bottom:-14px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-m);padding:10px 14px;font-size:var(--fs-xs);color:var(--ink-2);
+  box-shadow:var(--sh-s);max-width:200px;
+}
+.hero-art .cap b{color:var(--red-deep);}
+
+/* 主栅格 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--sp-5);align-items:start;}
+main{padding-bottom:var(--sp-6);}
+section.block{margin-bottom:var(--sp-6);scroll-margin-top:var(--stick-h);}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:var(--sp-4);flex-wrap:wrap;}
+.sec-head h2{font-size:var(--fs-l);}
+.sec-head .desc{font-size:var(--fs-s);color:var(--ink-3);}
+.sec-head .more{margin-left:auto;font-size:var(--fs-s);}
+
+/* 概览 */
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);}
+.ov-card{border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-3) var(--sp-4);background:var(--card);box-shadow:var(--sh-s);}
+.ov-card b{display:block;font-size:var(--fs-m);color:var(--ink);margin-bottom:4px;}
+.ov-card span{font-size:var(--fs-s);color:var(--ink-3);}
+.ov-card.hl{background:var(--red-soft);border-color:#f2ccd3;}
+
+/* 精选内容 */
+.picks{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--sp-3);}
+.pick{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;background:var(--card);display:flex;flex-direction:column;box-shadow:var(--sh-s);}
+.pick img{width:100%;height:150px;object-fit:cover;}
+.pick .body{padding:14px var(--sp-3) var(--sp-3);}
+.pick .kicker{font-size:var(--fs-xs);color:var(--red);letter-spacing:1px;margin-bottom:6px;}
+.pick h3{font-size:var(--fs-m);margin-bottom:6px;}
+.pick p{font-size:var(--fs-s);color:var(--ink-2);margin:0;}
+.pick:first-child{grid-row:span 1;}
+.pick:first-child img{height:210px;}
+
+/* 最新更新 紧凑列表 */
+.updates{list-style:none;padding:0;border-top:1px solid var(--line);}
+.updates li{display:flex;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);align-items:baseline;}
+.updates time{font-size:var(--fs-xs);color:var(--ink-3);white-space:nowrap;min-width:64px;}
+.updates .ttl{font-weight:600;color:var(--ink);}
+.updates .meta{font-size:var(--fs-xs);color:var(--ink-3);margin-left:auto;white-space:nowrap;}
+
+/* 分类入口 标签索引 */
+.channels{display:flex;flex-wrap:wrap;gap:10px;}
+.channels a{
+  border:1px solid var(--line);background:#fff;border-radius:99px;
+  padding:7px 16px;font-size:var(--fs-s);color:var(--ink-2);
+}
+.channels a:hover{border-color:var(--red);color:var(--red-deep);text-decoration:none;background:var(--red-soft);}
+.channels a b{color:var(--red);font-weight:600;margin-left:6px;font-size:var(--fs-xs);}
+
+/* 深度解析 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:var(--sp-5);box-shadow:var(--sh-s);}
+.deep h2{font-size:var(--fs-xl);margin-bottom:8px;}
+.deep .standfirst{font-size:var(--fs-s);color:var(--ink-3);border-left:3px solid var(--red);padding-left:12px;margin-bottom:var(--sp-4);}
+.deep h3{font-size:var(--fs-m);margin:var(--sp-4) 0 10px;padding-top:var(--sp-2);}
+.deep p{color:var(--ink-2);}
+.claim{background:var(--sand);border-radius:var(--r-m);padding:var(--sp-3) var(--sp-4);margin:var(--sp-3) 0;border-left:4px solid var(--gold);}
+.claim b{color:var(--ink);}
+table.cmp{width:100%;border-collapse:collapse;font-size:var(--fs-s);margin:var(--sp-3) 0;}
+table.cmp th,table.cmp td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+table.cmp th{background:var(--sand);font-weight:600;color:var(--ink);}
+.timeline{list-style:none;padding:0;margin:var(--sp-3) 0;border-left:2px solid var(--red-soft);}
+.timeline li{position:relative;padding:0 0 14px 20px;}
+.timeline li::before{content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--red);}
+.timeline b{display:block;color:var(--ink);font-size:var(--fs-s);}
+.timeline span{font-size:var(--fs-s);color:var(--ink-2);}
+.note-src{font-size:var(--fs-xs);color:var(--ink-3);border-top:1px solid var(--line);padding-top:10px;margin-top:var(--sp-3);}
+
+/* 体验指南 编号步骤 */
+.steps{counter-reset:st;list-style:none;padding:0;display:grid;gap:var(--sp-3);}
+.steps li{counter-increment:st;position:relative;padding:var(--sp-3) var(--sp-4) var(--sp-3) 60px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);}
+.steps li::before{
+  content:counter(st,decimal-leading-zero);position:absolute;left:18px;top:16px;
+  font-size:var(--fs-m);font-weight:700;color:var(--red);letter-spacing:1px;
+}
+.steps b{display:block;margin-bottom:2px;}
+.steps span{font-size:var(--fs-s);color:var(--ink-2);}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);}
+.panel{border-radius:var(--r-m);padding:var(--sp-4);border:1px solid var(--line);background:var(--card);}
+.panel.pos{border-color:#bfdcd9;background:#f2faf9;}
+.panel.neg{border-color:#f2ccd3;background:#fdf5f6;}
+.panel h3{font-size:var(--fs-m);margin-bottom:10px;}
+.panel.pos h3{color:var(--teal);}
+.panel.neg h3{color:var(--red-deep);}
+.panel ul{margin:0;padding-left:1.1em;font-size:var(--fs-s);color:var(--ink-2);}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line);padding:12px 0;}
+.faq summary{
+  cursor:pointer;font-weight:600;color:var(--ink);font-size:var(--fs-b);
+  list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"＋";color:var(--red);font-weight:400;font-size:var(--fs-m);}
+.faq details[open] summary::after{content:"－";}
+.faq details p{margin:10px 0 0;font-size:var(--fs-s);color:var(--ink-2);}
+
+/* 评论 */
+.comments{display:grid;gap:var(--sp-3);}
+.cmt{border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-3) var(--sp-4);background:var(--card);}
+.cmt .who{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:var(--fs-s);}
+.cmt .ava{width:28px;height:28px;border-radius:50%;background:var(--red-soft);color:var(--red-deep);display:grid;place-items:center;font-size:var(--fs-xs);font-weight:700;flex:none;}
+.cmt .who b{color:var(--ink);}
+.cmt .who time{color:var(--ink-3);font-size:var(--fs-xs);margin-left:auto;}
+.cmt p{margin:0;font-size:var(--fs-s);color:var(--ink-2);}
+.cmt .ref{color:var(--red-deep);}
+
+/* 资讯 */
+.news{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);}
+.news article{border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-3) var(--sp-4);background:var(--card);}
+.news h3{font-size:var(--fs-b);margin-bottom:4px;}
+.news p{font-size:var(--fs-s);color:var(--ink-3);margin:0;}
+
+/* 推荐标签 */
+.tags{display:flex;flex-wrap:wrap;gap:9px;}
+.tags a{background:var(--sand);border-radius:var(--r-s);padding:6px 12px;font-size:var(--fs-s);color:var(--ink-2);border:1px solid transparent;}
+.tags a:hover{background:var(--red-soft);color:var(--red-deep);border-color:#f2ccd3;text-decoration:none;}
+
+/* 榜单 */
+.rank{list-style:none;padding:0;display:grid;gap:var(--sp-2);}
+.rank li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:10px var(--sp-3);background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);}
+.rank .no{font-weight:700;color:var(--red);font-size:var(--fs-m);text-align:center;}
+.rank .nm b{display:block;font-size:var(--fs-b);}
+.rank .nm span{font-size:var(--fs-xs);color:var(--ink-3);}
+.rank .sc{font-size:var(--fs-s);color:var(--teal);font-weight:600;white-space:nowrap;}
+
+/* 互动投票 */
+.poll{border:1px solid var(--line);border-radius:var(--r-m);padding:var(--sp-4);background:var(--card);}
+.poll h3{font-size:var(--fs-m);margin-bottom:4px;}
+.poll .sub{font-size:var(--fs-s);color:var(--ink-3);margin-bottom:var(--sp-3);}
+.poll-opt{display:flex;flex-direction:column;gap:8px;}
+.poll-opt button{
+  text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--r-s);
+  padding:10px 14px;font-size:var(--fs-s);cursor:pointer;color:var(--ink-2);
+  display:flex;justify-content:space-between;gap:10px;
+}
+.poll-opt button:hover{border-color:var(--red);}
+.poll-opt button .bar{color:var(--red-deep);font-weight:600;}
+.poll-note{font-size:var(--fs-xs);color:var(--ink-3);margin-top:12px;min-height:20px;}
+
+/* 侧栏 */
+aside.rail{display:grid;gap:var(--sp-3);position:sticky;top:calc(var(--stick-h) + 12px);}
+.rail-card{border:1px solid var(--line);border-radius:var(--r-m);background:var(--card);padding:var(--sp-3) var(--sp-4);box-shadow:var(--sh-s);}
+.rail-card h3{font-size:var(--fs-s);letter-spacing:1px;color:var(--ink-3);margin-bottom:10px;font-weight:600;}
+.rail-nav{list-style:none;margin:0;padding:0;font-size:var(--fs-s);}
+.rail-nav a{display:block;padding:6px 10px;border-radius:var(--r-s);color:var(--ink-2);border-left:2px solid transparent;}
+.rail-nav a:hover{background:var(--sand);text-decoration:none;}
+.rail-nav a.active{background:var(--red-soft);color:var(--red-deep);border-left-color:var(--red);font-weight:600;}
+.rail-list{list-style:none;margin:0;padding:0;font-size:var(--fs-s);}
+.rail-list li{padding:7px 0;border-bottom:1px dashed var(--line);color:var(--ink-2);}
+.rail-list li:last-child{border-bottom:0;}
+.rail-list b{color:var(--red-deep);margin-right:6px;}
+
+/* 页脚 */
+footer.site{background:#241f20;color:#d9cfd0;padding:var(--sp-6) 0 var(--sp-4);font-size:var(--fs-s);}
+footer.site a{color:#f0c9ce;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--sp-4);}
+.foot-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:var(--fs-m);color:#fff;margin-bottom:12px;}
+.foot-brand svg{width:30px;height:30px;}
+.foot-pos{color:#b7aaac;font-size:var(--fs-s);max-width:26em;}
+footer h4{font-size:var(--fs-s);color:#fff;margin-bottom:10px;letter-spacing:1px;}
+footer ul{list-style:none;padding:0;margin:0;}
+footer ul li{margin-bottom:6px;}
+.foot-note{border-top:1px solid #3a3334;margin-top:var(--sp-5);padding-top:var(--sp-3);color:#9c9092;font-size:var(--fs-xs);display:flex;gap:20px;flex-wrap:wrap;}
+.totop{
+  position:fixed;right:18px;bottom:22px;z-index:70;display:none;
+  background:var(--red);color:#fff;border:0;border-radius:50%;width:46px;height:46px;
+  box-shadow:var(--sh-m);cursor:pointer;font-size:18px;
+}
+.totop.show{display:block;}
+
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr;}
+  .hero-art{max-width:440px;}
+  .layout{grid-template-columns:1fr;}
+  aside.rail{position:static;grid-template-columns:1fr 1fr;}
+  .overview{grid-template-columns:1fr 1fr;}
+  .picks{grid-template-columns:1fr 1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  :root{--fs-2xl:32px;--fs-xl:26px;--stick-h:96px;}
+  nav.main{
+    display:none;position:absolute;top:100%;left:0;right:0;background:#fff;
+    border-bottom:1px solid var(--line);padding:10px 16px 16px;flex-direction:column;
+    box-shadow:var(--sh-m);
+  }
+  nav.main.open{display:flex;}
+  nav.main a{padding:10px 8px;font-size:var(--fs-b);}
+  .btn-menu{display:inline-block;}
+  .head-in{position:relative;flex-wrap:wrap;gap:10px;}
+  .searchbox{min-width:0;flex:1 1 120px;}
+  .overview,.picks,.compare,.news{grid-template-columns:1fr;}
+  aside.rail{grid-template-columns:1fr;}
+  .deep{padding:var(--sp-4);}
+  .hero-stats{gap:var(--sp-3);}
+  .foot-grid{grid-template-columns:1fr;}
+  .updates li{flex-wrap:wrap;gap:4px 12px;}
+  .updates .meta{margin-left:0;}
+  .pick img,.pick:first-child img{height:170px;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none!important;animation:none!important;}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"糖心vl","description":"影像创作设备实测与拍摄流程复盘社区","inLanguage":"zh-CN"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"糖心vl上常说的宽容度实拍测试怎么做？","acceptedAnswer":{"@type":"Answer","text":"固定ISO 800、4K 25p、LOG档位，用同一组灰阶卡与高光灯泡拍摄，再在达芬奇里按18%灰定中灰，逐档提亮到噪点可见，记录可恢复的档数。"}},
+{"@type":"Question","name":"拍室内人像，3000K主灯配5600K补光会不会脏？","acceptedAnswer":{"@type":"Answer","text":"两种色温同时打在白墙和肤色上会产生偏色带。要么统一到3200K，要么把补光降到1/4功率并加1/2 CTB，让色差落在可调范围。"}},
+{"@type":"Question","name":"8bit 4:2:0 素材能直接套用电影感LUT吗？","acceptedAnswer":{"@type":"Answer","text":"可以套，但先做一级还原。8bit素材断层风险高，套LUT后建议检查肤色过渡区，必要时用降噪与轻微模糊打底再调。"}},
+{"@type":"Question","name":"手持稳定器在楼梯跟拍怎么调？","acceptedAnswer":{"@type":"Answer","text":"把俯仰轴力度下调约15%，跟随速度设为中低，脚步走外八压低重心，机身贴近身体一侧，避免手臂前伸。"}},
+{"@type":"Question","name":"麦克风录到的空调底噪怎么处理？","acceptedAnswer":{"@type":"Answer","text":"先看录制电平，空调底噪常落在-48dB到-42dB。剪辑时用EQ在200Hz以下做高通，再挂轻度降噪，降噪量超过6dB就要考虑重录。"}},
+{"@type":"Question","name":"糖心vl的机型点评会标注测试版本吗？","acceptedAnswer":{"@type":"Answer","text":"会。机身固件版本、镜头卡口、录制码率与测试日期都写在文末参数表，固件更新后旧结论会加注说明。"}}
+]}
+</script>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主内容</a>
+
+<div class="sticky-zone">
+  <div class="announce">
+    <div class="wrap">
+      <span class="tag">糖心vl 更新</span>
+      <span>11月7日新增《A7S4 与 R5II 双机位夜戏宽容度对照》，含 14 组灰阶原片与达芬奇节点截图。｜11月6日「灯光布光表」补入 3200K 单灯柔光箱方案。</span>
+      <time datetime="2026-11-08">2026-11-08</time>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap head-in">
+      <a class="brand" href="/#top" aria-label="糖心vl 首页">
+        <svg class="mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect width="64" height="64" rx="16" fill="#d1495b"/>
+          <circle cx="32" cy="32" r="15" fill="#fff0f2"/>
+          <circle cx="32" cy="32" r="7" fill="#d1495b"/>
+          <circle cx="46" cy="18" r="4" fill="#fff0f2"/>
+        </svg>
+        糖心vl
+      </a>
+      <button class="btn-menu" id="menuBtn" aria-expanded="false" aria-controls="mainNav">栏目菜单</button>
+      <nav class="main" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#picks">精选推荐</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#channels">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="head-tools">
+        <div class="searchbox">
+          <input id="q" type="search" placeholder="搜机型、布光、调色" aria-label="站内搜索">
+          <button id="qBtn" type="button">查找</button>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">设备实测 · 拍摄复盘 · 调色参数</span>
+      <h1>糖心vl</h1>
+      <p class="lede">把相机参数、灯位图和现场录音摆到同一张桌上。每篇实测写明固件版本、镜头、录制码率与测试日期，结论能被复现，也能被推翻。</p>
+      <div class="hero-acts">
+        <a class="btn btn-solid" href="/#deep">看本周深度解析</a>
+        <a class="btn btn-ghost" href="/#guide">按步骤搭机位</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>186</b><span>机型实测记录</span></div>
+        <div><b>43</b><span>布光方案表</span></div>
+        <div><b>27</b><span>调色节点模板</span></div>
+        <div><b>11-07</b><span>最近一次更新</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="frame">
+        <svg viewBox="0 0 400 350" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+              <stop offset="1" stop-color="#ffd9de" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <polygon points="60,40 190,120 150,270 30,240" fill="url(#beam)"/>
+          <rect x="200" y="150" width="150" height="105" rx="12" fill="#241f20"/>
+          <circle cx="275" cy="202" r="34" fill="#3b3234"/>
+          <circle cx="275" cy="202" r="24" fill="#d1495b"/>
+          <circle cx="275" cy="202" r="10" fill="#241f20"/>
+          <rect x="218" y="128" width="44" height="26" rx="6" fill="#3b3234"/>
+          <rect x="304" y="122" width="26" height="30" rx="5" fill="#3b3234"/>
+          <rect x="200" y="272" width="150" height="14" rx="7" fill="#b7aaac"/>
+          <polygon points="60,40 190,120 150,270 30,240" fill="none" stroke="#d1495b" stroke-opacity=".35"/>
+          <circle cx="330" cy="70" r="26" fill="#fff0f2"/>
+          <path d="M318 70h24M330 58v24" stroke="#d1495b" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="cap">本周主测：<b>A7S4</b> 双原生ISO与<b>R5II</b> 8K裁切，14组灰阶原片可下载核对。</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap layout">
+<main id="main">
+
+  <section class="block" id="overview">
+    <div class="sec-head">
+      <h2>领域概览</h2>
+      <span class="desc">先弄清拍什么、用什么、卡在哪</span>
+    </div>
+    <div class="overview">
+      <div class="ov-card hl">
+        <b>机型实测库</b>
+        <span>按机身、卡口、固件版本归档，含宽容度、果冻效应、自动对焦三类可比数据。</span>
+      </div>
+      <div class="ov-card">
+        <b>布光方案表</b>
+        <span>单灯、双灯、三灯与窗光改造四类，标注色温、柔光箱尺寸与灯距。</span>
+      </div>
+      <div class="ov-card">
+        <b>调色节点模板</b>
+        <span>达芬奇与Premiere通用，一级还原、肤色保护、胶片颗粒三层结构。</span>
+      </div>
+      <div class="ov-card">
+        <b>现场收音清单</b>
+        <span>枪麦、领夹、录音机的电平区间与底噪实测，附空调环境对照。</span>
+      </div>
+      <div class="ov-card">
+        <b>剪辑流程复盘</b>
+        <span>素材整理、代理生成、时间线规范，写明软件版本与项目帧率。</span>
+      </div>
+      <div class="ov-card">
+        <b>成本核算</b>
+        <span>器材租赁、场地、后期工时按天计价，给出可对照的报价区间。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="picks">
+    <div class="sec-head">
+      <h2>精选内容推荐</h2>
+      <a class="more" href="/#deep">全部深度解析</a>
+    </div>
+    <div class="picks">
+      <a class="pick" href="/#deep">
+        <img src="https://picsum.photos/seed/tangxin-camera/720/420" width="720" height="420" loading="lazy" alt="暗光棚内相机架在三脚架上，侧后方一盏柔光箱">
+        <div class="body">
+          <div class="kicker">双机位夜戏</div>
+          <h3>A7S4 与 R5II 夜戏宽容度对照</h3>
+          <p>同一场景、同一镜头、同一曝光，提亮到噪点可见为止，记录可恢复档数与色彩偏移。</p>
+        </div>
+      </a>
+      <a class="pick" href="/#guide">
+        <img src="https://picsum.photos/seed/tangxin-light/720/420" width="720" height="420" loading="lazy" alt="室内白墙前一盏柔光箱与反光板组成的主辅光位">
+        <div class="body">
+          <div class="kicker">布光</div>
+          <h3>3200K 单灯柔光箱人像方案</h3>
+          <p>灯距2.2米、柔光箱90cm、功率1/8，肤色过曝控制在1/3档以内。</p>
+        </div>
+      </a>
+      <a class="pick" href="/#faq">
+        <img src="https://picsum.photos/seed/tangxin-color/720/420" width="720" height="420" loading="lazy" alt="调色台上显示器显示波形图与肤色参考线">
+        <div class="body">
+          <div class="kicker">调色</div>
+          <h3>8bit 素材套LUT前的三步打底</h3>
+          <p>先做一级还原，再用节点限制断层，最后检查肤色过渡区，参数全部列出。</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="latest">
+    <div class="sec-head">
+      <h2>最新更新</h2>
+      <span class="desc">11月1日至11月8日</span>
+    </div>
+    <ul class="updates">
+      <li><time datetime="2026-11-07">11-07</time><span class="ttl">A7S4 与 R5II 双机位夜戏宽容度对照</span><span class="meta">实测 · 14组原片</span></li>
+      <li><time datetime="2026-11-06">11-06</time><span class="ttl">3200K 单灯柔光箱布光表补入灯距参数</span><span class="meta">布光 · 修订</span></li>
+      <li><time datetime="2026-11-05">11-05</time><span class="ttl">手持稳定器楼梯跟拍力度参数</span><span class="meta">稳定器 · 新增</span></li>
+      <li><time datetime="2026-11-04">11-04</time><span class="ttl">录音机底噪与空调频段对照表</span><span class="meta">收音 · 实测</span></li>
+      <li><time datetime="2026-11-03">11-03</time><span class="ttl">达芬奇胶片颗粒节点模板 v1.4</span><span class="meta">调色 · 模板</span></li>
+      <li><time datetime="2026-11-02">11-02</time><span class="ttl">室内窗光改造：反光板与纱布叠加</span><span class="meta">布光 · 复盘</span></li>
+      <li><time datetime="2026-11-01">11-01</time><span class="ttl">短片项目成本核算：三人四天</span><span class="meta">成本 · 清单</span></li>
+    </ul>
+  </section>
+
+  <section class="block" id="channels">
+    <div class="sec-head">
+      <h2>分类入口</h2>
+      <span class="desc">按你手上的问题直接跳</span>
+    </div>
+    <div class="channels">
+      <a href="/#deep">全画幅机身实测<b>62</b></a>
+      <a href="/#deep">APS-C 与 M4/3 对照<b>28</b></a>
+      <a href="/#guide">单灯人像布光<b>19</b></a>
+      <a href="/#guide">双灯与轮廓光<b>14</b></a>
+      <a href="/#faq">LOG 与宽容度<b>33</b></a>
+      <a href="/#faq">8bit 调色防断层<b>21</b></a>
+      <a href="/#latest">手持稳定器调参<b>17</b></a>
+      <a href="/#latest">现场收音与底噪<b>26</b></a>
+      <a href="/#latest">剪辑代理与项目规范<b>12</b></a>
+      <a href="/#overview">器材租赁与成本<b>9</b></a>
+      <a href="/#comments">创作者评论<b>140</b></a>
+      <a href="/#rank">本月榜单<b>8</b></a>
+    </div>
+  </section>
+
+  <section class="block" id="deep">
+    <div class="deep">
+      <h2>深度解析：双原生ISO不是免噪券</h2>
+      <p class="standfirst">基于 11月7日 A7S4 与 R5II 同场测试、14 组灰阶原片与 6 条现场监听记录。判断可以核对，也可以反驳。</p>
+
+      <h3>判断一：第二原生ISO的收益，一半来自机内降噪策略</h3>
+      <p>把 A7S4 固定在 ISO 12800 与第二原生档位各拍一组，达芬奇里统一按 18% 灰定中灰，再逐档提亮 1/3 档，直到暗部噪点肉眼可见。第二原生档位能多撑约 1.7 档，但把机内降噪从「标准」调到「关」后，这个差距缩到 0.8 档。数字说明：纯传感器层面收益有限，机内处理贡献了另一半。</p>
+      <div class="claim"><b>可核对项：</b>同场景、同镜头 35mm、同光圈 f/2.8、快门 1/50、4K 25p、S-Log3，测试日期 2026-11-07，机身固件 2.01。</div>
+
+      <h3>判断二：R5II 的 8K 裁切在夜戏里更省镜头，但代价是果冻效应</h3>
+      <p>同一晚，R5II 用 8K 30p 裁切模式换到等效 50mm，省下一支长焦，可横摇镜头时路灯出现约 1.5 度倾斜拖影。A7S4 全画幅 4K 25p 同速横摇几乎看不到变形。这个结论适用夜景扫镜，不适用于固定机位。</p>
+      <table class="cmp">
+        <thead><tr><th>项目</th><th>A7S4</th><th>R5II</th></tr></thead>
+        <tbody>
+          <tr><td>暗部可恢复档数</td><td>约 1.7 档（降噪开）</td><td>约 1.2 档（降噪开）</td></tr>
+          <tr><td>横摇果冻</td><td>轻微，可接受</td><td>明显，约 1.5 度倾斜</td></tr>
+          <tr><td>裁切后用镜</td><td>仍需长焦</td><td>可省一支 85mm</td></tr>
+          <tr><td>机身发热提示</td><td>28 分钟出现</td><td>21 分钟出现</td></tr>
+        </tbody>
+      </table>
+
+      <h3>判断三：色温混用比噪点更容易毁掉夜戏</h3>
+      <p>11月5日一场便利店夜戏，主灯 5600K、补光 3200K，白墙出现 8 厘米宽的偏色带，后期拉回后肤色发青。把补光降到 1/4 功率并加 1/2 CTB 后，色差落入可调范围。流程上：先定环境色温，再定人物补光，最后用灰卡在中景位置取白平衡。</p>
+      <ul class="timeline">
+        <li><b>19:40 布光</b><span>主灯 5600K 位于收银台左后，补光 3200K 置于冰柜前，距离人物 1.1 米。</span></li>
+        <li><b>20:05 试拍</b><span>白墙出现偏色带，肤色取样值 R 198 / G 176 / B 158，偏青。</span></li>
+        <li><b>20:20 调整</b><span>补光加 1/2 CTB、功率降到 1/4，灰卡取样 R=G=B 误差小于 2。</span></li>
+        <li><b>20:50 复拍</b><span>同机位同参数，肤色回到 R 205 / G 178 / B 162，可调。</span></li>
+      </ul>
+
+      <h3>争议点：低码率 10bit 是否值得为夜戏买账</h3>
+      <p>一种说法是 10bit 4:2:2 在暗部过渡上稳赢 8bit 4:2:0；另一种说法是只要控制曝光，8bit 也能用。11月4日对比了 200Mbps 与 100Mbps 两档：提亮 2 档后，8bit 素材在墙面渐变处出现 3 条可见断层，10bit 只有 1 条。事实层面差距成立；但「值不值得换机」属于推测，取决于你每月夜戏的场次和后期预算。</p>
+      <p class="note-src">数据来源：机身直出原片与达芬奇 19 节点截图，原片编号 TX-1107-A01 至 A14，可在「最新更新」对应的条目下按编号检索。</p>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <div class="sec-head">
+      <h2>体验指南：四步搭好一个可复现的机位</h2>
+      <span class="desc">按顺序做，做完能拍出可对照的样片</span>
+    </div>
+    <ol class="steps">
+      <li><b>先定帧率与快门</b><span>25p 配 1/50，50p 配 1/100。手持跟拍不要用 1/50 配 50p，拖影会出现不一致的顿挫感。</span></li>
+      <li><b>再定光比</b><span>人像主辅光比控制在 2:1 到 3:1。用测光表分别读主光面和阴影面，差 1 档是 2:1，差 1.5 档约 2.8:1。</span></li>
+      <li><b>然后录一段 30 秒校准片</b><span>包含灰卡、白卡、肤色参考与一句人声。剪辑时先对这段做一级还原，再套用到整场素材。</span></li>
+      <li><b>最后标参数</b><span>固件版本、镜头、光圈、快门、ISO、码率、LUT 名称，写在项目文件夹的 readme 里，方便下次复用。</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="compare">
+    <div class="sec-head">
+      <h2>对照面板：单灯柔光箱 vs 双灯轮廓</h2>
+    </div>
+    <div class="compare">
+      <div class="panel pos">
+        <h3>单灯柔光箱适用场景</h3>
+        <ul>
+          <li>室内人物访谈，背景干净，想突出面部立体</li>
+          <li>灯距 2.2 米、柔光箱 90cm、功率 1/8，ISO 800 时 f/2.8 刚好</li>
+          <li>肤色过渡柔和，后期只需轻微提亮阴影</li>
+          <li>布光时间约 15 分钟，一人可完成</li>
+        </ul>
+      </div>
+      <div class="panel neg">
+        <h3>双灯轮廓的代价</h3>
+        <ul>
+          <li>需要第二个灯架和遮光板，小房间转身困难</li>
+          <li>轮廓灯功率过高会在发丝上过曝，需降到主光的 1/3</li>
+          <li>两灯色温不一致时，颈侧会出现偏色带</li>
+          <li>布光时间约 40 分钟，建议两人协作</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="sec-head">
+      <h2>常见问题</h2>
+      <span class="desc">都来自实测记录里被问得最多的六条</span>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>宽容度实拍测试怎么做才可复现？</summary>
+        <p>固定 ISO 800、4K 25p、LOG 档位，用同一组灰阶卡与高光灯泡拍摄，再在达芬奇里按 18% 灰定中灰，逐档提亮到噪点可见，记录可恢复档数。机身固件与镜头要写进备注。</p>
+      </details>
+      <details>
+        <summary>拍室内人像，3000K 主灯配 5600K 补光会不会脏？</summary>
+        <p>两种色温同时打在白墙和肤色上会产生偏色带。要么统一到 3200K，要么把补光降到 1/4 功率并加 1/2 CTB，让色差落在可调范围。</p>
+      </details>
+      <details>
+        <summary>8bit 4:2:0 素材能直接套用电影感 LUT 吗？</summary>
+        <p>可以套，但先做一级还原。8bit 素材断层风险高，套 LUT 后建议检查肤色过渡区，必要时用降噪与轻微模糊打底再调。</p>
+      </details>
+      <details>
+        <summary>手持稳定器在楼梯跟拍怎么调？</summary>
+        <p>把俯仰轴力度下调约 15%，跟随速度设为中低，脚步走外八压低重心，机身贴近身体一侧，避免手臂前伸。</p>
+      </details>
+      <details>
+        <summary>麦克风录到的空调底噪怎么处理？</summary>
+        <p>先看录制电平，空调底噪常落在 -48dB 到 -42dB。剪辑时用 EQ 在 200Hz 以下做高通，再挂轻度降噪，降噪量超过 6dB 就要考虑重录。</p>
+      </details>
+      <details>
+        <summary>机型点评会标注测试版本吗？</summary>
+        <p>会。机身固件版本、镜头卡口、录制码率与测试日期都写在文末参数表，固件更新后旧结论会加注说明。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="block" id="comments">
+    <div class="sec-head">
+      <h2>用户评论</h2>
+      <span class="desc">来自实测条目下的留言，观点保留原样</span>
+    </div>
+    <div class="comments">
+      <div class="cmt">
+        <div class="who"><span class="ava">林</span><b>林野拍片</b><time datetime="2026-11-07">11-07</time></div>
+        <p>按 <span class="ref">A7S4 夜戏对照</span> 那组参数重拍了一遍，降噪关掉后确实只剩 0.8 档差距，之前一直被机内降噪的数字骗了。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="ava">周</span><b>周小雨</b><time datetime="2026-11-07">11-07</time></div>
+        <p>3200K 单灯方案对新手友好，但 90cm 柔光箱在小客厅真的转不开，换成 60cm 后肤色过渡差一点，可接受。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="ava">陈</span><b>陈默剪辑</b><time datetime="2026-11-06">11-06</time></div>
+        <p>8bit 套 LUT 那段写得偏乐观。我手上 8bit 素材提亮 1.5 档，墙面就出三条断层，打底也救不回来，建议把风险写得更重。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="ava">吴</span><b>吴一舟</b><time datetime="2026-11-05">11-05</time></div>
+        <p>稳定器楼梯跟拍把俯仰力度降 15% 这条很实用。补一句：下楼比上楼更难，跟随速度还要再降一档。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="ava">何</span><b>何夕</b><time datetime="2026-11-04">11-04</time></div>
+        <p>空调底噪那篇的频段图挺清楚，就是录音机型号只给了一个，想看看千元级领夹的对照数据。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="ava">赵</span><b>赵编辑</b><time datetime="2026-11-03">11-03</time></div>
+        <p>夜戏色温那段说「补光加 1/2 CTB」——实际片场我用 1/4 CTB 也基本能压住，可能跟墙面反射率有关，值得再测一组。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="news">
+    <div class="sec-head">
+      <h2>相关资讯</h2>
+      <span class="desc">与实测条目相连的行业动向</span>
+    </div>
+    <div class="news">
+      <article>
+        <h3>A7S4 固件 2.02 预告改善长时间录制发热</h3>
+        <p>厂商服务页 11月6日列出更新说明，提到 4K 60p 连续录制时长延长。实测条目将在固件推送后补一组对照。</p>
+      </article>
+      <article>
+        <h3>达芬奇 19.2 调整胶片颗粒节点参数命名</h3>
+        <p>版本更新说明 11月4日发布，原有颗粒模板需要重新映射节点。已归档的 v1.4 模板将加注兼容说明。</p>
+      </article>
+      <article>
+        <h3>租赁市场 85mm 定焦周租价格回落</h3>
+        <p>11月第一周三家租赁商报价从 480 元降至 420 元，夜戏双机位项目的镜头成本可省约 12%。</p>
+      </article>
+      <article>
+        <h3>短视频平台更新上传码率建议</h3>
+        <p>11月3日创作者后台文档把 4K 建议码率上调至 60Mbps，导出设置需同步调整。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="rank">
+    <div class="sec-head">
+      <h2>本月实测榜单</h2>
+      <span class="desc">按可复现度与数据完整度排序</span>
+    </div>
+    <ol class="rank">
+      <li><span class="no">1</span><span class="nm"><b>A7S4 夜戏宽容度对照</b><span>14 组原片 · 固件 2.01</span></span><span class="sc">复现 9.4</span></li>
+      <li><span class="no">2</span><span class="nm"><b>R5II 8K 裁切与果冻测试</b><span>横摇 3 组 · 120fps 升格</span></span><span class="sc">复现 9.1</span></li>
+      <li><span class="no">3</span><span class="nm"><b>3200K 单灯柔光箱方案</b><span>灯距参数齐全</span></span><span class="sc">复现 8.8</span></li>
+      <li><span class="no">4</span><span class="nm"><b>录音机空调底噪对照</b><span>4 台设备 · 6 个频段</span></span><span class="sc">复现 8.5</span></li>
+      <li><span class="no">5</span><span class="nm"><b>稳定器楼梯跟拍调参</b><span>3 种力度设置</span></span><span class="sc">复现 8.2</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="tags">
+    <div class="sec-head">
+      <h2>相关推荐</h2>
+      <span class="desc">常被一起翻的条目</span>
+    </div>
+    <div class="tags">
+      <a href="/#deep">A7S4 双原生ISO实测</a>
+      <a href="/#deep">R5II 8K 裁切果冻</a>
+      <a href="/#guide">3200K 单灯柔光箱布光</a>
+      <a href="/#guide">双灯轮廓光色温统一</a>
+      <a href="/#faq">8bit 素材套LUT防断层</a>
+      <a href="/#faq">LOG 档位宽容度测试</a>
+      <a href="/#latest">手持稳定器俯仰力度</a>
+      <a href="/#latest">空调底噪 200Hz 高通</a>
+      <a href="/#overview">三人四天短片成本核算</a>
+      <a href="/#compare">单灯与双灯光比对照</a>
+    </div>
+  </section>
+
+  <section class="block" id="poll">
+    <div class="poll">
+      <h3>你下次夜戏最想先解决哪一项？</h3>
+      <p class="sub">投票只存在本地，刷新后重置。11月8日统计。</p>
+      <div class="poll-opt" id="pollOpts">
+        <button type="button" data-k="iso"><span>暗部噪点与可恢复档数</span><span class="bar">—</span></button>
+        <button type="button" data-k="ctb"><span>主辅光色温混用偏色</span><span class="bar">—</span></button>
+        <button type="button" data-k="jelly"><span>横摇果冻与镜头裁切</span><span class="bar">—</span></button>
+        <button type="button" data-k="audio"><span>现场底噪与空调频段</span><span class="bar">—</span></button>
+      </div>
+      <p class="poll-note" id="pollNote" role="status" aria-live="polite">选一项，看当前票数。</p>
+    </div>
+  </section>
+
+</main>
+
+<aside class="rail" aria-label="侧栏导航与速览">
+  <div class="rail-card">
+    <h3>栏目导航</h3>
+    <ul class="rail-nav" id="railNav">
+      <li><a href="/#overview">领域概览</a></li>
+      <li><a href="/#picks">精选内容推荐</a></li>
+      <li><a href="/#latest">最新更新</a></li>
+      <li><a href="/#channels">分类入口</a></li>
+      <li><a href="/#deep">深度解析</a></li>
+      <li><a href="/#guide">体验指南</a></li>
+      <li><a href="/#compare">对照面板</a></li>
+      <li><a href="/#faq">常见问题</a></li>
+      <li><a href="/#comments">用户评论</a></li>
+      <li><a href="/#news">相关资讯</a></li>
+      <li><a href="/#rank">本月榜单</a></li>
+      <li><a href="/#tags">相关推荐</a></li>
+    </ul>
+  </div>
+  <div class="rail-card">
+    <h3>可核对数据速览</h3>
+    <ul class="rail-list">
+      <li><b>1.7 档</b>A7S4 第二原生档暗部可恢复</li>
+      <li><b>0.8 档</b>关闭机内降噪后的差距</li>
+      <li><b>1.5°</b>R5II 8K 横摇路灯倾斜角</li>
+      <li><b>-48dB</b>空调底噪典型电平</li>
+      <li><b>6dB</b>降噪超过就建议重录</li>
+      <li><b>12%</b>85mm 周租降价幅度</li>
+    </ul>
+  </div>
+</aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <rect width="64" height="64" rx="16" fill="#d1495b"/>
+            <circle cx="32" cy="32" r="15" fill="#fff0f2"/>
+            <circle cx="32" cy="32" r="7" fill="#d1495b"/>
+            <circle cx="46" cy="18" r="4" fill="#fff0f2"/>
+          </svg>
+          糖心vl
+        </div>
+        <p class="foot-pos">把每一次拍摄的参数、灯位和失败原因留在记录里，让下一场少走一遍弯路。</p>
+      </div>
+      <div>
+        <h4>实测栏目</h4>
+        <ul>
+          <li><a href="/#deep">全画幅机身对照</a></li>
+          <li><a href="/#deep">8K 裁切与果冻</a></li>
+          <li><a href="/#faq">LOG 宽容度测试</a></li>
+          <li><a href="/#latest">现场收音清单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>流程栏目</h4>
+        <ul>
+          <li><a href="/#guide">单灯柔光箱布光</a></li>
+          <li><a href="/#compare">光比对照面板</a></li>
+          <li><a href="/#latest">剪辑代理规范</a></li>
+          <li><a href="/#overview">成本核算</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="/#comments">留下实测评论</a></li>
+          <li><a href="/#poll">夜戏难点投票</a></li>
+          <li><a href="/#rank">本月榜单</a></li>
+          <li><a href="/#tags">相关推荐标签</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>页面数据为示例条目，机型参数与报价以厂商与租赁商实际公示为准。</span>
+      <span>更新时间 2026-11-08，对应正文新增：11-07 双机位夜戏对照、11-06 布光表灯距参数。</span>
+      <span>© 2026 糖心vl</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainNav');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=720){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600){toTop.classList.add('show');}else{toTop.classList.remove('show');}
+  },{passive:true});
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* 侧栏滚动高亮 */
+  var links=Array.prototype.slice.call(document.querySelectorAll('#railNav a'));
+  var sections=links.map(function(a){return document.querySelector(a.getAttribute('href').replace('/#','#'));}).filter(Boolean);
+  if('IntersectionObserver' in window&&sections.length){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var id='#'+en.target.id;
+          links.forEach(function(l){if(l.getAttribute('href').replace('/#','#')===id){l.classList.add('active');}});
+        }
+      });
+    },{rootMargin:'-120px 0px -60% 0px',threshold:0});
+    sections.forEach(function(s){obs.observe(s);});
+  }
+
+  /* 本地搜索 */
+  var q=document.getElementById('q'),qBtn=document.getElementById('qBtn');
+  function runSearch(){
+    var kw=(q.value||'').trim().toLowerCase();
+    if(!kw){window.alert('请输入机型、布光或调色关键词，例如「果冻」「CTB」「8bit」。');return;}
+    var main=document.getElementById('main');
+    var nodes=main.querySelectorAll('section.block, .rank li, .cmt, .faq details');
+    var first=null;
+    nodes.forEach(function(n){
+      n.style.outline='';
+      var txt=n.textContent.toLowerCase();
+      if(txt.indexOf(kw)>-1&&!first){first=n;}
+    });
+    if(first){
+      first.scrollIntoView({behavior:'smooth',block:'start'});
+      first.style.transition='outline .2s';
+      first.style.outline='2px solid #d1495b';
+      setTimeout(function(){first.style.outline='';},2200);
+    }else{
+      window.alert('没有找到包含「'+kw+'」的条目。可试试：宽容度、灯距、底噪、LUT、稳定器。');
+    }
+  }
+  qBtn.addEventListener('click',runSearch);
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runSearch();}});
+
+  /* 投票 */
+  var base={iso:38,ctb:24,jelly:19,audio:31};
+  var voted=false;
+  var box=document.getElementById('pollOpts'),note=document.getElementById('pollNote');
+  var btns=box?box.querySelectorAll('button'):[];
+  function render(addKey){
+    var tot=0,vals={};
+    Object.keys(base).forEach(function(k){vals[k]=base[k]+(addKey===k?1:0);tot+=vals[k];});
+    btns.forEach(function(b){
+      var k=b.dataset.k;
+      var pct=Math.round(vals[k]/tot*100);
+      b.querySelector('.bar').textContent=pct+'%';
+    });
+  }
+  render(null);
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      if(voted){note.textContent='每个条目只计一票，刷新页面可重新计。';return;}
+      voted=true;
+      render(b.dataset.k);
+      note.textContent='已记录：'+b.querySelector('span').textContent+'。共 '+Object.keys(base).reduce(function(s,k){return s+base[k];},1)+' 票。';
+    });
+  });
+})();
+</script>
+</body>
+  </html>
