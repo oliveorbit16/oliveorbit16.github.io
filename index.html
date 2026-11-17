@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>r星每日大赛寸止挑战-规则解析与参赛指南</title>
+<meta name="description" content="r星每日大赛寸止挑战是围绕《GTA5》与《荒野大镖客2》玩家自组织的限时忍耐类挑战。整理每日题面、计时规则、参赛记录、举报流程与常见争议，含11月赛事时间线与经验玩家的实操判断。">
+<meta name="keywords" content="r星每日大赛寸止挑战">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f2b21b'/%3E%3Cpath d='M9 9h14v4h-9v3h7v4h-7v3h9v4H9z' fill='%231a1a1a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b1b1f;
+  --ink-2:#4a4a55;
+  --ink-3:#71717e;
+  --paper:#fbfaf7;
+  --card:#ffffff;
+  --line:#e4e1d8;
+  --line-2:#d3cfc2;
+  --brand:#f2b21b;
+  --brand-deep:#c98a08;
+  --brand-soft:#fdf3d6;
+  --accent:#2f6f6a;
+  --accent-soft:#e3f0ee;
+  --danger:#a4442f;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --shadow-1:0 1px 2px rgba(27,27,31,.06),0 4px 14px rgba(27,27,31,.05);
+  --shadow-2:0 2px 6px rgba(27,27,31,.08),0 12px 30px rgba(27,27,31,.07);
+  --sp-1:8px;--sp-2:12px;--sp-3:16px;--sp-4:24px;--sp-5:32px;--sp-6:48px;--sp-7:64px;
+  --font-sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:ui-monospace,"SFMono-Regular","Cascadia Mono",Consolas,monospace;
+  --sticky-h:96px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sticky-h) + 16px)}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--font-sans);font-size:16px;line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;
+}
+h1,h2,h3,h4{margin:0;line-height:1.32;font-weight:700;letter-spacing:.01em}
+h2{font-size:clamp(1.28rem,2.4vw,1.6rem)}
+h3{font-size:1.06rem}
+p{margin:0 0 var(--sp-3)}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.25em}
+li{margin-bottom:6px}
+::selection{background:var(--brand);color:#1a1a1a}
+
+/* ===== 吸顶容器 ===== */
+.sticky-wrap{position:sticky;top:0;z-index:60}
+.announce{
+  background:var(--ink);color:#f6f2e5;font-size:.8rem;line-height:1.5;
+  padding:7px var(--sp-3);
+}
+.announce-in{
+  max-width:1180px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+}
+.announce .tag{
+  background:var(--brand);color:#1a1a1a;font-weight:700;border-radius:3px;
+  padding:1px 7px;font-size:.72rem;letter-spacing:.04em;flex:none;
+}
+.announce a{color:var(--brand);border-bottom:1px solid rgba(242,178,27,.45);padding-bottom:1px}
+.announce .when{color:#b9b4a4;margin-left:auto;font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:.74rem}
+
+.site-head{
+  background:rgba(251,250,247,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-in{
+  max-width:1180px;margin:0 auto;padding:10px var(--sp-3);
+  display:flex;align-items:center;gap:var(--sp-3);
+}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand-mark{width:38px;height:38px;flex:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text b{font-size:1.02rem;letter-spacing:.01em}
+.brand-text span{font-size:.68rem;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase}
+.nav{
+  display:flex;gap:2px;align-items:center;flex-wrap:wrap;flex:1;
+}
+.nav a{
+  font-size:.855rem;color:var(--ink-2);padding:6px 10px;border-radius:var(--radius-s);
+  white-space:nowrap;
+}
+.nav a:hover{background:var(--brand-soft);color:var(--ink)}
+.head-tools{display:flex;align-items:center;gap:8px;flex:none}
+.search{display:flex;align-items:center;border:1px solid var(--line-2);border-radius:999px;background:var(--card);padding:2px 4px 2px 12px}
+.search input{
+  border:0;background:transparent;font:inherit;font-size:.84rem;width:132px;padding:5px 0;color:var(--ink);
+}
+.search input::placeholder{color:var(--ink-3)}
+.search button{
+  border:0;background:var(--ink);color:#fff;border-radius:999px;font:inherit;font-size:.8rem;
+  padding:5px 12px;cursor:pointer;
+}
+.search button:hover{background:var(--brand-deep)}
+.menu-btn{
+  display:none;border:1px solid var(--line-2);background:var(--card);border-radius:var(--radius-s);
+  padding:6px 10px;font:inherit;font-size:.84rem;cursor:pointer;color:var(--ink);
+}
+.search-result{
+  max-width:1180px;margin:0 auto;padding:0 var(--sp-3);
+}
+.search-result .box{
+  display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:10px 14px;font-size:.86rem;color:var(--ink-2);margin-bottom:8px;box-shadow:var(--shadow-1);
+}
+.search-result .box.open{display:block}
+.search-result .hit{display:block;padding:4px 0;border-bottom:1px dashed var(--line);color:var(--ink)}
+.search-result .hit:last-child{border-bottom:0}
+
+/* ===== 首屏 ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 82% -8%,#fbe8ad 0%,rgba(251,232,173,0) 62%),
+    linear-gradient(180deg,#fffdf6 0%,#f6f2e6 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-in{
+  max-width:1180px;margin:0 auto;padding:var(--sp-6) var(--sp-3) var(--sp-5);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:var(--sp-5);align-items:center;
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:.76rem;letter-spacing:.14em;
+  color:var(--brand-deep);font-weight:700;text-transform:uppercase;margin-bottom:14px;
+}
+.hero-kicker::before{content:"";width:26px;height:2px;background:var(--brand-deep);display:block}
+.hero h1{
+  font-size:clamp(1.85rem,4.4vw,3rem);letter-spacing:-.01em;line-height:1.18;margin-bottom:var(--sp-3);
+}
+.hero h1 .hl{
+  background:linear-gradient(transparent 62%, rgba(242,178,27,.55) 62%);
+}
+.hero-desc{font-size:1.02rem;color:var(--ink-2);max-width:36em;margin-bottom:var(--sp-4)}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:600;
+  padding:10px 18px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#33333a}
+.btn-ghost{background:var(--card);border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.hero-stats{display:flex;gap:var(--sp-4);flex-wrap:wrap;border-top:1px solid var(--line-2);padding-top:var(--sp-3)}
+.hero-stats div{font-size:.8rem;color:var(--ink-3)}
+.hero-stats b{display:block;font-size:1.32rem;color:var(--ink);font-family:var(--font-mono);letter-spacing:-.02em}
+.hero-art{
+  position:relative;background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-l);
+  box-shadow:var(--shadow-2);padding:18px;
+}
+.hero-art svg{display:block;width:100%;height:auto}
+.hero-art .caption{
+  font-size:.74rem;color:var(--ink-3);font-family:var(--font-mono);margin-top:12px;
+  display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:8px;
+}
+
+/* ===== 布局 ===== */
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--sp-3)}
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:var(--sp-5);
+  align-items:start;padding:var(--sp-5) 0 var(--sp-6);
+}
+main{min-width:0}
+section[id]{margin-bottom:var(--sp-6)}
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:var(--sp-3);
+}
+.sec-head h2{flex:none}
+.sec-head .note{font-size:.79rem;color:var(--ink-3);margin-left:auto;font-family:var(--font-mono)}
+.lead{font-size:.96rem;color:var(--ink-2);margin-bottom:var(--sp-3)}
+
+/* 三栏门户（简洁） */
+.portal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3)}
+.p-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:16px;box-shadow:var(--shadow-1);transition:transform .18s ease,box-shadow .18s ease;
+}
+.p-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+.p-card .cat{font-size:.72rem;color:var(--brand-deep);font-weight:700;letter-spacing:.08em}
+.p-card h3{margin:6px 0 6px;font-size:.98rem}
+.p-card p{font-size:.83rem;color:var(--ink-2);margin:0 0 10px}
+.p-card .meta{font-size:.73rem;color:var(--ink-3);font-family:var(--font-mono);display:flex;gap:8px;flex-wrap:wrap}
+.p-card.tall{grid-row:span 2}
+.p-card.tall img{margin:10px 0;border-radius:var(--radius-s)}
+
+/* 精选内容推荐 */
+.feat{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--sp-3)}
+.feat-main{
+  background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-m);
+  overflow:hidden;box-shadow:var(--shadow-1);
+}
+.feat-main img{aspect-ratio:16/9;width:100%;object-fit:cover}
+.feat-body{padding:16px}
+.feat-body .rank{
+  display:inline-block;background:var(--brand);color:#1a1a1a;font-size:.7rem;font-weight:700;
+  border-radius:3px;padding:1px 7px;margin-bottom:8px;letter-spacing:.05em;
+}
+.feat-body h3{font-size:1.12rem;margin-bottom:6px}
+.feat-body p{font-size:.86rem;color:var(--ink-2)}
+.feat-list{display:grid;gap:10px}
+.f-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-s);
+  padding:11px 13px;display:flex;gap:12px;align-items:flex-start;
+}
+.f-item .num{font-family:var(--font-mono);color:var(--brand-deep);font-weight:700;font-size:.9rem;flex:none;width:22px}
+.f-item h4{font-size:.9rem;margin:0 0 3px}
+.f-item p{font-size:.78rem;color:var(--ink-3);margin:0}
+
+/* 最新更新 紧凑列表 */
+.updates{border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;background:var(--card)}
+.u-row{
+  display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  padding:11px 16px;border-bottom:1px solid var(--line);font-size:.87rem;
+}
+.u-row:last-child{border-bottom:0}
+.u-row time{font-family:var(--font-mono);font-size:.75rem;color:var(--ink-3);white-space:nowrap}
+.u-row a{border-bottom:1px solid transparent}
+.u-row a:hover{border-bottom-color:var(--brand)}
+.u-row .chip{font-size:.71rem;color:var(--accent);background:var(--accent-soft);border-radius:3px;padding:1px 7px;white-space:nowrap}
+
+/* 分类入口 标签索引 */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips a{
+  font-size:.83rem;background:var(--card);border:1px solid var(--line-2);
+  border-radius:999px;padding:6px 14px;color:var(--ink-2);
+}
+.chips a:hover{border-color:var(--brand);background:var(--brand-soft);color:var(--ink)}
+.chips a small{color:var(--ink-3);font-family:var(--font-mono);margin-left:4px}
+
+/* 深度解析 */
+.deep{
+  background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-m);
+  padding:var(--sp-4);box-shadow:var(--shadow-1);
+}
+.deep h2{font-size:1.34rem;margin-bottom:6px}
+.deep .d-meta{font-size:.76rem;color:var(--ink-3);font-family:var(--font-mono);margin-bottom:var(--sp-3)}
+.deep h3{font-size:1.02rem;margin:var(--sp-4) 0 8px;padding-left:10px;border-left:4px solid var(--brand)}
+.deep p{font-size:.93rem;color:var(--ink-2)}
+.deep .factbox{
+  border:1px solid var(--line-2);border-left:4px solid var(--accent);border-radius:var(--radius-s);
+  background:var(--accent-soft);padding:12px 15px;font-size:.86rem;color:#22403d;margin:var(--sp-3) 0;
+}
+.deep .factbox b{color:#15302d}
+.deep table{width:100%;border-collapse:collapse;font-size:.83rem;margin:var(--sp-3) 0}
+.deep th,.deep td{border:1px solid var(--line-2);padding:7px 10px;text-align:left}
+.deep th{background:#f6f2e6;font-weight:700}
+.deep blockquote{
+  margin:var(--sp-3) 0;padding:12px 18px;border-left:4px solid var(--brand-deep);
+  background:#fffdf6;font-size:.9rem;color:var(--ink-2);border-radius:0 var(--radius-s) var(--radius-s) 0;
+}
+
+/* 体验指南 编号步骤 */
+.steps{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{
+  counter-increment:s;position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-s);padding:12px 16px 12px 52px;font-size:.88rem;color:var(--ink-2);
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:14px;top:12px;
+  font-family:var(--font-mono);font-weight:700;color:var(--brand-deep);font-size:.9rem;
+}
+.steps li b{color:var(--ink)}
+
+/* FAQ */
+details{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-s);
+  margin-bottom:8px;overflow:hidden;
+}
+details[open]{border-color:var(--line-2);box-shadow:var(--shadow-1)}
+summary{
+  cursor:pointer;padding:11px 16px;font-size:.9rem;font-weight:600;list-style:none;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-mono);color:var(--brand-deep);font-weight:700;flex:none}
+details[open] summary::after{content:"−"}
+details .ans{padding:0 16px 13px;font-size:.86rem;color:var(--ink-2)}
+
+/* 评论 */
+.comments{display:grid;gap:10px}
+.cm{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 15px;
+}
+.cm-head{display:flex;gap:9px;align-items:center;margin-bottom:5px}
+.avt{
+  width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:.72rem;font-weight:700;color:#fff;font-family:var(--font-mono);
+}
+.cm-head b{font-size:.83rem}
+.cm-head time{font-size:.72rem;color:var(--ink-3);font-family:var(--font-mono);margin-left:auto}
+.cm p{font-size:.85rem;color:var(--ink-2);margin:0}
+.cm .to{color:var(--accent);font-size:.79rem}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+.cmp{
+  border:1px solid var(--line-2);border-radius:var(--radius-m);background:var(--card);overflow:hidden;
+}
+.cmp header{padding:9px 15px;font-size:.83rem;font-weight:700;letter-spacing:.03em}
+.cmp.pro header{background:var(--accent-soft);color:#1d4340}
+.cmp.con header{background:#f7e6e1;color:#7a3324}
+.cmp ul{list-style:none;margin:0;padding:12px 15px;font-size:.84rem;color:var(--ink-2)}
+.cmp li{position:relative;padding-left:16px;margin-bottom:7px}
+.cmp li::before{content:"▸";position:absolute;left:0;color:var(--ink-3)}
+
+/* 榜单 */
+.board{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-m);overflow:hidden}
+.b-row{
+  display:grid;grid-template-columns:38px minmax(0,1fr) 84px 72px;gap:10px;align-items:center;
+  padding:10px 15px;border-bottom:1px solid var(--line);font-size:.86rem;
+}
+.b-row:last-child{border-bottom:0}
+.b-row .pos{font-family:var(--font-mono);font-weight:700;color:var(--ink-3)}
+.b-row.top1 .pos{color:var(--brand-deep)}
+.b-row .who b{display:block;font-size:.87rem}
+.b-row .who small{color:var(--ink-3);font-size:.74rem}
+.b-row .val{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-2);text-align:right}
+.b-row .tag{font-size:.71rem;text-align:right;color:var(--accent)}
+
+/* 相关推荐 标签 */
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags a{
+  font-size:.82rem;background:var(--brand-soft);border:1px solid #f0dfae;color:#6b4d05;
+  border-radius:var(--radius-s);padding:5px 11px;
+}
+.tags a:hover{background:var(--brand);color:#1a1a1a;border-color:var(--brand)}
+
+/* 时间线 */
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line-2)}
+.tl li{position:relative;padding:0 0 var(--sp-3) 18px;font-size:.87rem;color:var(--ink-2)}
+.tl li::before{
+  content:"";position:absolute;left:-25px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--card);border:2px solid var(--brand-deep);
+}
+.tl li b{display:block;color:var(--ink);font-size:.9rem}
+.tl li time{font-family:var(--font-mono);font-size:.73rem;color:var(--ink-3)}
+
+/* 引语卡 */
+.quote{
+  background:#fffdf6;border:1px solid var(--line-2);border-radius:var(--radius-m);
+  padding:var(--sp-4);position:relative;margin-top:var(--sp-3);
+}
+.quote::before{
+  content:"“";position:absolute;top:-6px;left:14px;font-size:3.4rem;color:var(--brand);
+  font-family:Georgia,serif;line-height:1;
+}
+.quote p{font-size:.95rem;color:var(--ink-2);margin:0 0 10px}
+.quote footer{font-size:.78rem;color:var(--ink-3);font-family:var(--font-mono)}
+
+/* 侧栏 */
+aside{min-width:0}
+.side-block{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:15px;margin-bottom:var(--sp-3);
+}
+.side-block h3{font-size:.9rem;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.side-block h3::before{content:"";width:4px;height:15px;background:var(--brand);border-radius:2px}
+.side-nav{display:grid;gap:2px;font-size:.85rem}
+.side-nav a{
+  padding:5px 9px;border-radius:var(--radius-s);color:var(--ink-2);border-left:3px solid transparent;
+}
+.side-nav a:hover{background:#f6f2e6}
+.side-nav a.active{background:var(--brand-soft);color:var(--ink);border-left-color:var(--brand-deep);font-weight:600}
+.side-list{list-style:none;margin:0;padding:0;font-size:.84rem}
+.side-list li{padding:7px 0;border-bottom:1px dashed var(--line);margin:0}
+.side-list li:last-child{border-bottom:0}
+.side-list a:hover{color:var(--brand-deep)}
+.side-list .n{font-family:var(--font-mono);color:var(--ink-3);font-size:.76rem;margin-right:5px}
+.side-note{font-size:.79rem;color:var(--ink-3);line-height:1.65}
+
+/* 页尾 */
+.site-foot{
+  background:#1b1b1f;color:#c9c6bc;margin-top:var(--sp-5);padding:var(--sp-6) 0 var(--sp-4);
+  font-size:.85rem;
+}
+.foot-in{max-width:1180px;margin:0 auto;padding:0 var(--sp-3);display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--sp-4)}
+.foot-brand b{color:#fff;font-size:1.05rem;display:block;margin-bottom:6px}
+.foot-brand p{color:#9a978d;font-size:.83rem;margin:0 0 12px}
+.foot-brand .upd{font-family:var(--font-mono);font-size:.74rem;color:#7f7d75}
+.foot-col h4{color:#fff;font-size:.85rem;margin-bottom:10px;letter-spacing:.03em}
+.foot-col ul{list-style:none;margin:0;padding:0;font-size:.82rem}
+.foot-col li{margin-bottom:6px}
+.foot-col a:hover{color:var(--brand)}
+.foot-bottom{
+  max-width:1180px;margin:var(--sp-5) auto 0;padding:var(--sp-3) var(--sp-3) 0;
+  border-top:1px solid #33333a;font-size:.76rem;color:#87847c;display:flex;gap:14px;flex-wrap:wrap;
+}
+.foot-bottom .note{color:#6d6a63}
+
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line-2);background:var(--card);color:var(--ink);cursor:pointer;
+  display:grid;place-items:center;box-shadow:var(--shadow-1);opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .2s ease;font-size:.95rem;z-index:50;
+}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-3px)}
+
+/* 平板 */
+@media (max-width:1024px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside{order:2}
+  .hero-in{grid-template-columns:1fr;gap:var(--sp-4)}
+  .hero-art{max-width:520px}
+  .portal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feat{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+/* 手机 */
+@media (max-width:720px){
+  :root{--sticky-h:138px}
+  .menu-btn{display:inline-block}
+  .head-in{flex-wrap:wrap;gap:8px}
+  .nav{
+    display:none;width:100%;flex-direction:column;align-items:stretch;
+    border-top:1px solid var(--line);padding-top:8px;
+  }
+  .nav.open{display:flex}
+  .nav a{padding:8px 4px;border-bottom:1px dashed var(--line)}
+  .head-tools{margin-left:auto}
+  .search input{width:96px}
+  .portal{grid-template-columns:1fr}
+  .p-card.tall{grid-row:auto}
+  .compare{grid-template-columns:1fr}
+  .u-row{grid-template-columns:1fr;gap:3px}
+  .u-row time{order:-1}
+  .b-row{grid-template-columns:30px minmax(0,1fr) 66px;font-size:.82rem}
+  .b-row .tag{display:none}
+  .hero-in{padding-top:var(--sp-5)}
+  .hero-stats{gap:var(--sp-3)}
+  .deep{padding:var(--sp-3)}
+  .foot-in{grid-template-columns:1fr}
+  .announce .when{margin-left:0}
+  #toTop{right:12px;bottom:12px;width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .p-card:hover,#toTop:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announce">
+    <div class="announce-in">
+      <span class="tag">更新</span>
+      <span><b>r星每日大赛寸止挑战</b> 第 312 期题面已挂出：洛圣都「不碰方向盘 6 分钟」，11 月 8 日 09:00 截止提交。</span>
+      <a href="/#updates">看本期规则</a>
+      <span class="when">2026-11-08</span>
+    </div>
+  </div>
+
+  <header class="site-head">
+    <div class="head-in">
+      <a class="brand" href="/#hero" aria-label="回到首页">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="10" fill="#f2b21b"/>
+          <path d="M11 11h11.5c3.6 0 5.8 2 5.8 5.1 0 2.3-1.2 3.9-3.3 4.6l3.9 8.3h-5.1l-3.3-7.5h-4.4V29H11V11zm5.1 4v4.9h5.1c1.1 0 1.8-.6 1.8-1.6v-1.7c0-1-.7-1.6-1.8-1.6h-5.1z" fill="#1b1b1f"/>
+        </svg>
+        <span class="brand-text">
+          <b>r星每日大赛寸止挑战</b>
+          <span>Daily No-Push Cup</span>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+      <nav class="nav" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">赛事概览</a>
+        <a href="/#featured">每日题面</a>
+        <a href="/#updates">更新记录</a>
+        <a href="/#cats">挑战分类</a>
+        <a href="/#deep">规则深读</a>
+        <a href="/#guide">参赛步骤</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">玩家反馈</a>
+        <a href="/#board">当日榜</a>
+      </nav>
+      <div class="head-tools">
+        <div class="search">
+          <input id="q" type="search" placeholder="搜题面 / 地图 / 玩家" aria-label="站内搜索">
+          <button id="searchBtn">查</button>
+        </div>
+      </div>
+    </div>
+    <div class="search-result">
+      <div class="box" id="searchBox" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+</div>
+
+<div class="hero" id="hero">
+  <div class="hero-in">
+    <div>
+      <span class="hero-kicker">GTA5 / RDR2 限时忍耐赛</span>
+      <h1>r星每日大赛<span class="hl">寸止挑战</span></h1>
+      <p class="hero-desc">每天一道由社区题面组发出的忍耐类任务：不射击、不下车、不骑马、不升级武器，在限定分钟数里活下来并录屏提交。规则写在计时器上，胜负落在帧数里。第 312 期是「洛圣都不碰方向盘」，6 分钟、30 帧判定、必须开着小地图。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/#featured">看今日题面</a>
+        <a class="btn btn-ghost" href="/#guide">怎么提交录像</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>312</b>期已办</div>
+        <div><b>6′00″</b>本期限时</div>
+        <div><b>30fps</b>判定帧率</div>
+        <div><b>1,847</b>份有效投稿</div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 360 260" role="img" aria-label="计时器与方向盘示意图">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fbe8ad"/><stop offset="1" stop-color="#f2b21b"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="360" height="260" rx="14" fill="#fbfaf7"/>
+        <path d="M0 190 L360 150 L360 260 L0 260 Z" fill="#efe9d8"/>
+        <circle cx="255" cy="86" r="52" fill="none" stroke="url(#g1)" stroke-width="10"/>
+        <circle cx="255" cy="86" r="7" fill="#1b1b1f"/>
+        <path d="M255 86 L219 62 M255 86 L291 62 M255 86 L255 134" stroke="#1b1b1f" stroke-width="4" stroke-linecap="round"/>
+        <rect x="28" y="34" width="150" height="96" rx="10" fill="#1b1b1f"/>
+        <text x="46" y="78" font-family="ui-monospace,monospace" font-size="30" fill="#f2b21b">06:00</text>
+        <text x="46" y="104" font-family="ui-monospace,monospace" font-size="11" fill="#8f8b80">NO STEERING</text>
+        <rect x="28" y="146" width="150" height="9" rx="4.5" fill="#ddd7c6"/>
+        <rect x="28" y="146" width="96" height="9" rx="4.5" fill="#2f6f6a"/>
+        <text x="28" y="176" font-family="ui-monospace,monospace" font-size="10" fill="#71717e">REC 00:04:12 / 00:06:00</text>
+        <circle cx="308" cy="204" r="22" fill="none" stroke="#1b1b1f" stroke-width="3"/>
+        <path d="M296 204 l8 8 l16 -16" fill="none" stroke="#2f6f6a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="caption"><span>题面计时示意</span><span>SEED 312</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="layout">
+    <main>
+      <!-- 领域概览 -->
+      <section id="overview" aria-labelledby="h-overview">
+        <div class="sec-head">
+          <h2 id="h-overview">赛事概览：一天一题，限制叠在限制上</h2>
+          <span class="note">第 312 期 · 11-08</span>
+        </div>
+        <p class="lead">「寸止」在这里不是动作名称，而是规则形态：把玩家能做的动作一层层剥掉，只保留走路、观察、等待。题面组每天早上 08:00 在 Discord 公告频道和 R 星社区活动板块同步挂题，玩家在 24 小时内提交未剪辑录像，由三名志愿裁判按帧核对。</p>
+        <div class="portal">
+          <article class="p-card">
+            <span class="cat">题面结构</span>
+            <h3>三重限制：动作、区域、时长</h3>
+            <p>每道题至少锁死一个输入键（射击、加速、跳跃三选一），指定一张地图区块，再给定时长。第 312 期锁的是方向键上，区域为洛圣都市区东侧。三者缺一即判违规。</p>
+            <div class="meta"><span>08:00 挂题</span><span>次日 09:00 截稿</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">判定方式</span>
+            <h3>30 帧逐帧看，不用自动检测</h3>
+            <p>录像需带系统时钟叠加。裁判在第 30、150、300 秒各抽一帧核对按键状态，再抽查尾段。自动脚本只能看分辨率，按键有没有真按下去，得靠人眼。</p>
+            <div class="meta"><span>3 名裁判</span><span>2 票通过</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">参赛门槛</span>
+            <h3>平台、版本、账号三对齐</h3>
+            <p>PC（Steam / Epic）、PS5、Xbox Series 三端分开排名。同一题在旧版本 1.67 和新版本 1.68 上物理表现不同，版本号写错直接退稿。RDR2 题另设独立榜。</p>
+            <div class="meta"><span>3 端</span><span>版本 1.68</span></div>
+          </article>
+          <article class="p-card tall">
+            <span class="cat">题面示例</span>
+            <h3>「佩立托湾不下马 8 分钟」复盘</h3>
+            <img src="https://picsum.photos/seed/rdr2paleto/560/300" width="560" height="300" loading="lazy" alt="荒野大镖客2佩立托湾雪地骑马场景示意">
+            <p>第 298 期把玩家钉在马背上，禁下马、禁开死眼、禁换枪。有效投稿里 62% 的人在 4 分半前后被狼群打断，最终 19 份录像撑满 8 分钟。题面组事后把判定从「马未死」放宽为「人不落马」，因为马蹄卡石头翻车和主动下马在画面上几乎一样。</p>
+            <div class="meta"><span>2026-10-25</span><span>有效 19 / 投 214</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">裁判轮值</span>
+            <h3>每周七天，七天七组人</h3>
+            <p>裁判由往期前三名轮流担任，任期一周，回避自己参赛的期数。11 月第一周轮值的是 KR_lin、Nora_V 与一个不愿署名的老玩家，三人负责 305 到 311 期。</p>
+            <div class="meta"><span>轮值 11-01 起</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">奖励</span>
+            <h3>没有现金，只有下期题面署名权</h3>
+            <p>单期第一可在下一期公告里写一句规则补充，格式固定为「本期追加：……」。第 310 期冠军把「禁止使用出租车」写进了 311 期，导致那期投稿量掉了四成。</p>
+            <div class="meta"><span>署名权</span><span>无实物奖</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 精选内容推荐 -->
+      <section id="featured" aria-labelledby="h-featured">
+        <div class="sec-head">
+          <h2 id="h-featured">精选内容推荐：今天最该看的四份材料</h2>
+          <span class="note">按裁判复核次数排序</span>
+        </div>
+        <div class="feat">
+          <article class="feat-main">
+            <img src="https://picsum.photos/seed/gtafreeway312/640/360" width="640" height="360" loading="lazy" alt="GTA5洛圣都高速公路车流俯视画面">
+            <div class="feat-body">
+              <span class="rank">本期首选</span>
+              <h3>洛圣都高速公路不加速 6 分钟，怎么活过第一分钟</h3>
+              <p>东侧高速在 08:00 后车流密度最高，NPC 出租车的变道判定比玩家车更激进。实测把车停在加油站棚下、人坐在驾驶位不动，前 90 秒被撞概率约 34%；改停到辅路消防通道后降到 9%。这些数字来自 KR_lin 连续 22 次的同一位置记录。</p>
+              <div class="meta"><span>KR_lin</span><span>2026-11-07</span><span>复核 11 次</span></div>
+            </div>
+          </article>
+          <div class="feat-list">
+            <article class="f-item">
+              <span class="num">02</span>
+              <div>
+                <h4>荒野大镖客2圣丹尼斯不下马，马匹受惊的三条触发线</h4>
+                <p>枪声、蛇、马车擦碰。前两者可控，后者靠站位。</p>
+              </div>
+            </article>
+            <article class="f-item">
+              <span class="num">03</span>
+              <div>
+                <h4>1.67 与 1.68 版本车辆推力差异对照</h4>
+                <p>同一碰撞点位移差 0.4 米，足以改变第六条判定。</p>
+              </div>
+            </article>
+            <article class="f-item">
+              <span class="num">04</span>
+              <div>
+                <h4>录像叠加时钟的三种做法，哪种被退稿最少</h4>
+                <p>系统托盘时钟最稳，第三方计时器有 7 份被质疑。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section id="updates" aria-labelledby="h-updates">
+        <div class="sec-head">
+          <h2 id="h-updates">最新更新：题面、规则与退稿记录</h2>
+          <span class="note">11-06 至 11-08</span>
+        </div>
+        <div class="updates">
+          <div class="u-row">
+            <time>11-08 08:00</time>
+            <a href="/#featured">第 312 期题面挂出：不碰方向盘 6 分钟，区域限定洛圣都东侧高速</a>
+            <span class="chip">题面</span>
+          </div>
+          <div class="u-row">
+            <time>11-08 07:40</time>
+            <a href="/#deep">裁判组补充说明：倒车不算「碰方向盘」，但倒车超过 12 秒计一次违规</a>
+            <span class="chip">规则</span>
+          </div>
+          <div class="u-row">
+            <time>11-07 21:15</time>
+            <a href="/#faq">第 311 期退稿 38 份，其中 22 份因未录到系统时钟被退回</a>
+            <span class="chip">退稿</span>
+          </div>
+          <div class="u-row">
+            <time>11-07 16:02</time>
+            <a href="/#board">第 311 期成绩公示：PC 端第一为 Nora_V，成绩 4′58″ 未破 5 分钟</a>
+            <span class="chip">成绩</span>
+          </div>
+          <div class="u-row">
+            <time>11-06 19:30</time>
+            <a href="/#comments">RDR2 分榜新增「不下马」专类，与 GTA5 榜分开计算胜场</a>
+            <span class="chip">分榜</span>
+          </div>
+          <div class="u-row">
+            <time>11-06 11:20</time>
+            <a href="/#deep">关于「卡输入延迟」的争议帖被置顶，题面组承诺下期增加键位录像要求</a>
+            <span class="chip">争议</span>
+          </div>
+          <div class="u-row">
+            <time>10-30 09:00</time>
+            <a href="/#cats">10 月月榜结算：共办 31 期，有效投稿 4 万 1 千份，退稿率 18.6%</a>
+            <span class="chip">月榜</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分类入口 -->
+      <section id="cats" aria-labelledby="h-cats">
+        <div class="sec-head">
+          <h2 id="h-cats">挑战分类：按限制类型找题</h2>
+          <span class="note">括号为近 30 期出现次数</span>
+        </div>
+        <p class="lead">题面组的分类不看地图，只看被锁住的输入。同一张洛圣都地图能出十几道题，区别全在「不许按哪个键」。</p>
+        <div class="chips">
+          <a href="/#featured">不碰方向盘挑战 <small>9</small></a>
+          <a href="/#featured">不射击规则局 <small>7</small></a>
+          <a href="/#featured">不下马忍耐赛 <small>5</small></a>
+          <a href="/#guide">不开小地图导航 <small>4</small></a>
+          <a href="/#guide">不升级武器局 <small>3</small></a>
+          <a href="/#faq">禁死眼限时 <small>4</small></a>
+          <a href="/#faq">出租车禁用令 <small>2</small></a>
+          <a href="/#deep">单帧静止判定 <small>3</small></a>
+          <a href="/#deep">雨天物理局 <small>2</small></a>
+          <a href="/#comments">夜间视野限制 <small>2</small></a>
+          <a href="/#board">新手 3 分钟组 <small>6</small></a>
+          <a href="/#board">老手 8 分钟组 <small>4</small></a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section id="deep" aria-labelledby="h-deep">
+        <div class="sec-head">
+          <h2 id="h-deep">深度解析：寸止的可信度，卡在录像而不是规则</h2>
+          <span class="note">唯一长文 · 约 1,200 字</span>
+        </div>
+        <article class="deep">
+          <div class="d-meta">作者：轮值裁判组（KR_lin 执笔） · 2026-11-08 · 引用请注明期号 312</div>
+
+          <h3>一、判断：这套赛制的公信力瓶颈在录像采信，不在规则设计</h3>
+          <p>把「不按某个键」变成可比的成绩，规则本身不难写。难的是证明你确实没按。第 311 期 38 份退稿里，22 份是时钟问题、9 份是分辨率低于 720p、4 份是剪辑痕迹、3 份是版本号不符。因「疑似按键」被退的只有 0 份——不是没人按键，是没人能被证明按了。这个数字摆在这里，说明裁判系统能筛掉不合格的录像，却筛不掉不作弊的手。</p>
+          <div class="factbox"><b>可核对的一组数：</b>第 300 至 311 期，共 12 期、有效投稿 1,847 份、退稿 413 份、复核申诉 27 起、改判 3 起。改判的 3 起全部源于录像时钟与系统时间差超过 40 秒，与按键判定无关。</div>
+
+          <h3>二、案例时间线：一条「疑似卡输入延迟」的争议怎么走完流程</h3>
+          <ul class="tl">
+            <li><time>11-04 18:22</time><b>玩家 D 提交第 310 期录像</b>成绩 5′59″，超过当时榜首 11 秒，画面帧率稳定在 60。</li>
+            <li><time>11-04 20:10</time><b>裁判 A 提出异议</b>指出第 4′12″ 处车辆方向有 3 帧横向修正，疑似轻点方向键。</li>
+            <li><time>11-05 09:35</time><b>玩家 D 回应</b>称是路面颠簸导致的物理反馈，并附同场次第二机位（手机拍屏）录像。</li>
+            <li><time>11-05 14:00</time><b>裁判 B 逐帧比对</b>发现两段录像在该时间点相差 2.3 秒，第二机位无法作为同一时刻的证据。</li>
+            <li><time>11-05 22:40</time><b>三人投票</b>2 比 1 维持成绩，理由是录像未显示按键图标高亮，规则只认画面证据。</li>
+            <li><time>11-06 11:20</time><b>题面组置顶说明</b>承认判定存在盲区，宣布下期起要求录像包含按键显示叠加。</li>
+          </ul>
+          <p>争议的核心不是有没有按，而是「画面没有按键显示」能不能当反证。裁判 B 在内部记录里写得很直白：现有规则只支持「按了没被看见算没按」，不支持「没看见按当没按」。这两句听着像绕口令，差别却决定了成绩归属。</p>
+
+          <h3>三、说法差异：三端玩家对「帧率就是公平」的分歧</h3>
+          <p>PC 端玩家普遍支持 30 帧判定，因为高帧率机器在低频抽查下更容易被判「看起来没动」。主机端玩家反过来认为 30 帧太粗，PS5 版在 1.68 更新后车辆物理被重新调过，同等条件下更稳，应该按端分别设阈值。题面组的处理是分榜排名、不统一阈值，代价是跨端比较失去意义。</p>
+          <table>
+            <thead><tr><th>平台</th><th>常见帧率</th><th>本期投稿中位时长</th><th>判定抽查帧</th></tr></thead>
+            <tbody>
+              <tr><td>PC（Steam / Epic）</td><td>60 / 144</td><td>4′21″</td><td>第 30/150/300 秒</td></tr>
+              <tr><td>PS5</td><td>60</td><td>5′07″</td><td>同上，另加尾段</td></tr>
+              <tr><td>Xbox Series</td><td>60</td><td>4′49″</td><td>同上</td></tr>
+            </tbody>
+          </table>
+          <p>把三个中位时长并排看，PS5 领先 PC 约 46 秒。这是平台优势还是玩家构成差异，现有数据分辨不出，因为投稿里 PC 端新手占比明显更高。</p>
+
+          <h3>四、规则前后变化：1.67 到 1.68 改了什么，判定跟着改了什么</h3>
+          <p>1.68 更新把部分车辆的低速推挤反馈调软，NPC 车与玩家车发生接触后，玩家车位移减少约 0.4 米。判定的直接后果是：原来会被判「车辆明显移动」的接触，现在可能落在容差内。题面组没有改容差数值，只在说明里加了一句「以录像中车位标线为参照」，等于把部分判断从数值挪回了肉眼。对参赛者，这既是松绑也是不确定性。</p>
+          <blockquote>「规则可以写死，物理参数会被补丁改。」——第 309 期冠军在赛后复盘帖中的原话，帖子发布于 2026-10-31，标题为《别背规则，背地图》。</blockquote>
+
+          <h3>五、可核对结构：一份录像要过几道关</h3>
+          <ol>
+            <li><b>格式关：</b>分辨率 ≥720p、时长覆盖完整题面时间、无剪辑点。11-07 因格式退稿 31 份。</li>
+            <li><b>时钟关：</b>画面内可见系统时钟，且与提交时间相差不超过 10 分钟。因这一项退稿 22 份。</li>
+            <li><b>版本关：</b>版本号与所选平台一致，1.68 为当前基准。不符退稿 3 份。</li>
+            <li><b>动作关：</b>抽查帧内不得出现被禁按键高亮或角色动作。第 312 期起要求按键显示叠加。</li>
+            <li><b>申诉关：</b>公示后 24 小时内可申诉一次，需附第二机位或原始未压缩文件。</li>
+          </ol>
+          <p>五关里前三关靠核对，后两关靠判断。真正拉开差距的是第四关，而它恰恰最依赖录像质量。结论可以再具体一点：报名前先把录屏软件设好、把系统时钟放到画面角落、把按键显示打开，比多练两小时更能保住成绩。</p>
+        </article>
+      </section>
+
+      <!-- 体验指南 -->
+      <section id="guide" aria-labelledby="h-guide">
+        <div class="sec-head">
+          <h2 id="h-guide">体验指南：第一次参赛的六个动作</h2>
+          <span class="note">按顺序做完再录</span>
+        </div>
+        <ol class="steps">
+          <li><b>确认版本与平台。</b>先在游戏主菜单截图版本号，与公告里的基准版本对比。1.68 是当前基准，1.67 的成绩只进旧版分榜。</li>
+          <li><b>把系统时钟放上画面。</b>Windows 自带时钟贴纸、OBS 文本源、手机拍屏三种都行；裁判更认第一种。11-07 有 22 份因缺时钟退稿。</li>
+          <li><b>开按键显示。</b>第 312 期起强制要求，显示方向键、射击、加速三个键位即可，无需全键盘。</li>
+          <li><b>按题面选好出生点。</b>本期要求在洛圣都东侧高速区域内开始，出生点超出红线区直接不计。</li>
+          <li><b>录完整时段，不剪。</b>从开始计时到 6 分钟结束，中间暂停一次即视为不连续，需重录。</li>
+          <li><b>提交时写清：平台、版本、成绩、录像链接、是否首次参赛。</b>信息缺一项，裁判会在公示前退回补交，过期不候。</li>
+        </ol>
+        <div class="compare">
+          <div class="cmp pro">
+            <header>本期更容易过审的做法</header>
+            <ul>
+              <li>把车停在辅路消防通道，人不离驾驶位</li>
+              <li>关闭游戏内音乐，保留环境音便于核对</li>
+              <li>录像文件名写成「312_ID_成绩」</li>
+              <li>提前 10 分钟开始录，留出多余片段</li>
+            </ul>
+          </div>
+          <div class="cmp con">
+            <header>本期容易踩的坑</header>
+            <ul>
+              <li>倒车超过 12 秒，直接计一次违规</li>
+              <li>用出租车抵达起点，311 期禁令未撤销</li>
+              <li>只录游戏画面不录桌面时钟</li>
+              <li>成绩取整到秒后再报，与画面差 1 秒被质疑</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="h-faq">
+        <div class="sec-head">
+          <h2 id="h-faq">常见问题：规则、录像与申诉</h2>
+          <span class="note">按提问时间排序</span>
+        </div>
+        <details open>
+          <summary>寸止挑战里「不碰方向盘」到底禁哪些操作？</summary>
+          <div class="ans">禁方向键左右、禁鼠标转视角带来的车辆转向，倒车不算碰，但连续倒车超过 12 秒记一次违规。刹车和油门不在禁令内，因为题面只锁方向。第 312 期公告原文是「禁止一切主动转向输入」。</div>
+        </details>
+        <details>
+          <summary>录像没有显示系统时钟会被退稿吗？</summary>
+          <div class="ans">会。11-07 第 311 期 38 份退稿中有 22 份是这一项。规则要求画面内可见时钟，且与提交时间相差不超过 10 分钟，目的是防止拿旧录像改日期。</div>
+        </details>
+        <details>
+          <summary>PC 端和 PS5 端的成绩能直接比吗？</summary>
+          <div class="ans">不能。三端分开排名，阈值不统一。第 312 期 PC 端投稿中位时长 4′21″，PS5 为 5′07″，差距里既有平台物理差异，也有玩家构成差异，目前无法拆开。</div>
+        </details>
+        <details>
+          <summary>荒野大镖客2的下马题为什么单独设榜？</summary>
+          <div class="ans">马匹受惊涉及枪声、蛇和马车擦碰三类变量，判定比车辆题目更依赖运气。11-06 起 RDR2 分榜单列，「不下马」成绩只在本榜内比，不并入 GTA5 总胜场。</div>
+        </details>
+        <details>
+          <summary>对判罚不满怎么申诉？</summary>
+          <div class="ans">公示后 24 小时内提交一次，附第二机位或原始未压缩文件。复核由未参与初审的裁判做，改判需 2 票。第 300 至 311 期共 27 起申诉，改判 3 起，均与时钟误差有关。</div>
+        </details>
+        <details>
+          <summary>新手参加哪一档合适？</summary>
+          <div class="ans">新手 3 分钟组。时长压到 3 分钟，抽查帧减为第 30 秒和第 150 秒两处，容错更高。近 30 期这个组别共办 6 期，平均退稿率 11.4%，低于全站的 18.6%。</div>
+        </details>
+        <details>
+          <summary>为什么第 310 期冠军能把「禁用出租车」写进下一期？</summary>
+          <div class="ans">单期第一有下一期规则补充署名权，格式固定为「本期追加：……」，只能加一条、不能删原规则。311 期因此掉了约四成投稿量，题面组在 11-06 的说明里表示后续会限制追加条款的强度。</div>
+        </details>
+      </section>
+
+      <!-- 用户评论 -->
+      <section id="comments" aria-labelledby="h-comments">
+        <div class="sec-head">
+          <h2 id="h-comments">玩家反馈：录了 22 次的、退稿的、看热闹的</h2>
+          <span class="note">精选 6 条 · 保留原话</span>
+        </div>
+        <div class="comments">
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#2f6f6a">K</span><b>KR_lin</b><time>11-08 09:12</time></div>
+            <p>东侧高速辅路消防通道那个位置我又试了 6 次，0 次被 NPC 车撞，但 2 次被巡警拦下，下车就违规。<span class="to">建议把停车点往北挪 200 米。</span></p>
+          </article>
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#a4442f">D</span><b>D_boatman</b><time>11-08 08:47</time></div>
+            <p>第 310 期那份 5′59″ 的录像我看了三遍，4′12″ 那三帧确实像轻点，但没按键显示谁也说不清。新规要求开按键显示，早该这样。</p>
+          </article>
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#c98a08">N</span><b>Nora_V</b><time>11-07 22:03</time></div>
+            <p>311 期 4′58″ 已经是我极限，1.68 之后车太滑，刹车距离明显变长。<span class="to">不是技术问题，是物理参数改了。</span></p>
+          </article>
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#4a4a55">T</span><b>tired_mule</b><time>11-07 20:31</time></div>
+            <p>退稿 22 份全是时钟，公告里那行字字号太小，手机上看根本注意不到。能不能在提交页加个必勾选项。</p>
+          </article>
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#2f6f6a">S</span><b>Sadie_Q</b><time>11-07 17:26</time></div>
+            <p>佩立托湾那期我撑到 7′40″，最后被狼群掀下马。判定从「马未死」放宽到「人不落马」是合理的，马蹄卡石头翻车那段我反复看，确实像主动下马。</p>
+          </article>
+          <article class="cm">
+            <div class="cm-head"><span class="avt" style="background:#a4442f">8</span><b>八号观察员</b><time>11-06 23:58</time></div>
+            <p>纯路人。十天里看了三期，发现规则写得比大多数游戏赛事细，但讨论区全在吵版本和时钟，没人聊地图。<span class="to">深度解析那篇「别背规则，背地图」倒是说对了。</span></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section id="news" aria-labelledby="h-news">
+        <div class="sec-head">
+          <h2 id="h-news">相关资讯：周边赛制与数据</h2>
+          <span class="note">10-30 至 11-08</span>
+        </div>
+        <div class="portal">
+          <article class="p-card">
+            <span class="cat">赛制</span>
+            <h3>10 月月榜结算：31 期，退稿率 18.6%</h3>
+            <p>有效投稿 4 万 1 千份，退稿 413 份集中在时钟与分辨率两项。月榜前三分别来自 PC、PS5、Xbox 各一人，是分榜制实施后第一次三端各占一席。</p>
+            <div class="meta"><span>2026-10-30</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">版本</span>
+            <h3>1.68 补丁后车辆物理调整</h3>
+            <p>低速推挤反馈调软，NPC 车接触后玩家车位移减少约 0.4 米。题面组未改容差，只在说明中加入「以车位标线为参照」。</p>
+            <div class="meta"><span>2026-11-02</span></div>
+          </article>
+          <article class="p-card">
+            <span class="cat">社区</span>
+            <h3>按键显示叠加，第 312 期起强制</h3>
+            <p>缘起 11-04 的一份疑似卡输入延迟录像。要求显示方向键、射击、加速三个键位即可，不要求全键盘录制。</p>
+            <div class="meta"><span>2026-11-06</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section id="related" aria-labelledby="h-related">
+        <div class="sec-head">
+          <h2 id="h-related">相关推荐：按你搜的词找人</h2>
+          <span class="note">标签索引</span>
+        </div>
+        <div class="tags">
+          <a href="/#featured">洛圣都高速不转向玩法</a>
+          <a href="/#featured">佩立托湾不下马 8 分钟</a>
+          <a href="/#guide">录像带系统时钟怎么弄</a>
+          <a href="/#deep">1.67 与 1.68 车辆推力对照</a>
+          <a href="/#faq">寸止挑战退稿申诉流程</a>
+          <a href="/#board">新手 3 分钟组榜单</a>
+          <a href="/#faq">禁死眼限时怎么判定</a>
+          <a href="/#guide">出租车禁用令还生效吗</a>
+          <a href="/#comments">KR_lin 的 22 次停车记录</a>
+          <a href="/#deep">别背规则背地图 复盘帖</a>
+        </div>
+      </section>
+
+      <!-- 当日榜 -->
+      <section id="board" aria-labelledby="h-board">
+        <div class="sec-head">
+          <h2 id="h-board">当日榜：第 311 期公示成绩</h2>
+          <span class="note">PC 端 · 公示至 11-09 21:00</span>
+        </div>
+        <div class="board">
+          <div class="b-row top1">
+            <span class="pos">01</span>
+            <span class="who"><b>Nora_V</b><small>PS5 · 1.68 · 首次进前三</small></span>
+            <span class="val">4′58″</span>
+            <span class="tag">有效</span>
+          </div>
+          <div class="b-row">
+            <span class="pos">02</span>
+            <span class="who"><b>KR_lin</b><small>PC · 1.68 · 第 9 次参赛</small></span>
+            <span class="val">5′07″</span>
+            <span class="tag">有效</span>
+          </div>
+          <div class="b-row">
+            <span class="pos">03</span>
+            <span class="who"><b>Sadie_Q</b><small>Xbox Series · 1.68</small></span>
+            <span class="val">5′19″</span>
+            <span class="tag">有效</span>
+          </div>
+          <div class="b-row">
+            <span class="pos">04</span>
+            <span class="who"><b>D_boatman</b><small>PC · 1.68 · 申诉未改判</small></span>
+            <span class="val">5′41″</span>
+            <span class="tag">有效</span>
+          </div>
+          <div class="b-row">
+            <span class="pos">05</span>
+            <span class="who"><b>tired_mule</b><small>PC · 1.68 · 退稿后补交</small></span>
+            <span class="val">5′52″</span>
+            <span class="tag">补交</span>
+          </div>
+        </div>
+        <div class="quote">
+          <p>「别背规则，背地图。规则每期都改，东侧高速哪个消防通道能停，三年没变。」</p>
+          <footer>—— 第 309 期冠军，赛后复盘帖，2026-10-31</footer>
+        </div>
+      </section>
+    </main>
+
+    <aside aria-label="侧栏">
+      <div class="side-block">
+        <h3>本期导航</h3>
+        <nav class="side-nav" id="sideNav">
+          <a href="/#overview">赛事概览</a>
+          <a href="/#featured">精选内容推荐</a>
+          <a href="/#updates">最新更新</a>
+          <a href="/#cats">挑战分类</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">体验指南</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#comments">玩家反馈</a>
+          <a href="/#news">相关资讯</a>
+          <a href="/#related">相关推荐</a>
+          <a href="/#board">当日榜</a>
+        </nav>
+      </div>
+      <div class="side-block">
+        <h3>近三期成绩</h3>
+        <ul class="side-list">
+          <li><a href="/#board"><span class="n">311</span>不碰方向盘 5 分钟 · Nora_V 4′58″</a></li>
+          <li><a href="/#featured"><span class="n">310</span>圣丹尼斯不下马 · KR_lin 7′26″</a></li>
+          <li><a href="/#featured"><span class="n">309</span>雨天不加速 · Sadie_Q 5′44″</a></li>
+        </ul>
+      </div>
+      <div class="side-block">
+        <h3>参赛前先看</h3>
+        <p class="side-note">第 312 期要求录像包含按键显示叠加，11-06 起强制执行。缺这一项，裁判无法核对方向输入。录之前先确认时钟、分辨率、版本号三项，比多练两小时更省事。</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-in">
+    <div>
+      <div class="foot-brand">
+        <b>r星每日大赛寸止挑战</b>
+        <p>每天锁一个输入，把开放世界跑成限时忍耐题。题面、判定、申诉与成绩都留档可查。</p>
+        <span class="upd">正文更新对应：11-08 第 312 期题面、11-07 退稿统计、11-06 分榜与按键显示要求</span>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>赛事</h4>
+      <ul>
+        <li><a href="/#overview">赛事概览</a></li>
+        <li><a href="/#featured">每日题面</a></li>
+        <li><a href="/#updates">更新记录</a></li>
+        <li><a href="/#board">当日榜</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>规则</h4>
+      <ul>
+        <li><a href="/#deep">深度解析</a></li>
+        <li><a href="/#guide">体验指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+        <li><a href="/#cats">挑战分类</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>社区</h4>
+      <ul>
+        <li><a href="/#comments">玩家反馈</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#related">相关推荐</a></li>
+        <li><a href="/#faq">申诉流程</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 题面组与轮值裁判 · 成绩与投稿数据均为示例条目</span>
+    <span class="note">页面内容按 2026-11-08 之前可查记录编写</span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  /* 移动端菜单 */
+  var btn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainNav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=720){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* 本地搜索 */
+  var q=document.getElementById('q');
+  var sBtn=document.getElementById('searchBtn');
+  var box=document.getElementById('searchBox');
+  var idx=[
+    {t:'第 312 期题面：不碰方向盘 6 分钟',id:'featured',k:'洛圣都 高速 方向盘 寸止'},
+    {t:'赛事概览与三重限制',id:'overview',k:'题面结构 动作 区域 时长 裁判'},
+    {t:'更新记录 11-06 至 11-08',id:'updates',k:'退稿 时钟 版本 分榜 按键显示'},
+    {t:'挑战分类：不射击 / 不下马 / 不开小地图',id:'cats',k:'分类 标签 限制'},
+    {t:'深度解析：录像采信与争议时间线',id:'deep',k:'可信度 争议 卡输入延迟 帧率'},
+    {t:'体验指南：六个动作',id:'guide',k:'新手 录像 系统时钟 按键 提交'},
+    {t:'FAQ：倒车、时钟、申诉',id:'faq',k:'常见问题 退稿 申诉 倒车'},
+    {t:'玩家反馈',id:'comments',k:'评论 KR_lin Nora_V Sadie_Q'},
+    {t:'当日榜 第 311 期',id:'board',k:'榜单 成绩 4分58秒'},
+    {t:'相关推荐标签',id:'related',k:'标签 索引'}
+  ];
+  function doSearch(){
+    var v=(q.value||'').trim();
+    box.classList.add('open');
+    if(!v){
+      box.innerHTML='<span style="color:#71717e">输入关键词，如「时钟」「倒车」「311」。</span>';
+      return;
+    }
+    var low=v.toLowerCase();
+    var hits=idx.filter(function(it){
+      return (it.t+' '+it.k).toLowerCase().indexOf(low)>-1;
+    });
+    if(!hits.length){
+      box.innerHTML='<span style="color:#a4442f">没有匹配条目。本站现有题面、规则、FAQ、榜单四类内容，可换「时钟」「倒车」「311」再试。</span>';
+      return;
+    }
+    box.innerHTML=hits.map(function(it){
+      return '<a class="hit" href="/#'+it.id+'">'+it.t+'</a>';
+    }).join('');
+  }
+  if(sBtn&&q&&box){
+    sBtn.addEventListener('click',doSearch);
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){e.preventDefault();doSearch();}
+    });
+    q.addEventListener('input',function(){
+      if(!q.value){box.classList.remove('open');}
+    });
+    box.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){box.classList.remove('open');}
+    });
+  }
+
+  /* 侧栏滚动高亮 */
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var targets=links.map(function(a){
+    var id=a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  function highlight(){
+    var y=window.scrollY+160;
+    var cur=null;
+    targets.forEach(function(el){
+      if(el.offsetTop<=y) cur=el.id;
+    });
+    links.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+cur||a.getAttribute('href')==='/'+ '#'+cur;
+      a.classList.toggle('active',a.getAttribute('href').replace('/#','')===cur);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+
+  /* 回到顶部 */
+  var top=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    top.classList.toggle('show',window.scrollY>600);
+  },{passive:true});
+  top.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"r星每日大赛寸止挑战",
+  "description":"围绕 GTA5 与荒野大镖客2 的限时忍耐类社区赛事，整理每日题面、计时规则、录像判定、退稿记录与成绩公示。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"寸止挑战里「不碰方向盘」到底禁哪些操作？",
+      "acceptedAnswer":{"@type":"Answer","text":"禁方向键左右、禁鼠标转视角带来的车辆转向，倒车不算碰，但连续倒车超过 12 秒记一次违规。刹车和油门不在禁令内。"}
+    },
+    {
+      "@type":"Question",
+      "name":"录像没有显示系统时钟会被退稿吗？",
+      "acceptedAnswer":{"@type":"Answer","text":"会。第 311 期 38 份退稿中有 22 份是缺系统时钟。规则要求画面内可见时钟，且与提交时间相差不超过 10 分钟。"}
+    },
+    {
+      "@type":"Question",
+      "name":"PC 端和 PS5 端的成绩能直接比吗？",
+      "acceptedAnswer":{"@type":"Answer","text":"不能。三端分开排名，阈值不统一。第 312 期 PC 端投稿中位时长 4 分 21 秒，PS5 为 5 分 07 秒。"}
+    },
+    {
+      "@type":"Question",
+      "name":"荒野大镖客2的下马题为什么单独设榜？",
+      "acceptedAnswer":{"@type":"Answer","text":"马匹受惊涉及枪声、蛇和马车擦碰三类变量，判定更依赖运气。11 月 6 日起 RDR2 分榜单列，成绩只在本榜内比较。"}
+    },
+    {
+      "@type":"Question",
+      "name":"对判罚不满怎么申诉？",
+      "acceptedAnswer":{"@type":"Answer","text":"公示后 24 小时内提交一次，附第二机位或原始未压缩文件。复核由未参与初审的裁判做，改判需 2 票。第 300 至 311 期共 27 起申诉，改判 3 起。"}
+    }
+  ]
+}
+</script>
+</body>
+            </html>
